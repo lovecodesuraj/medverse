@@ -3,8 +3,20 @@ import './App.css';
 import {Container,AppBar,Typography,Grow,Grid} from "@material-ui/core";
 import AddQuestion from './components/forms/question/question';
 import Questions from './components/questions/questions';
+import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getQuestions } from './actions/questions';
+
 
 function App() {
+  const classes=useStyles();
+  const dispatch=useDispatch();
+  useEffect(()=>{
+      dispatch(getQuestions());
+  },[dispatch]);
+
+
   return<>
      <Container maxWidth="lg">
       <AppBar position='static' color='inherit'>

@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 const questionSchema=mongoose.Schema({
     question:{
         question:String,
-        filrs:[],
+        file:"",
     },
     creator:String,
-    tags:[],
+    tags:"",
     votes:[],
     answers:[],
     createdAt :{
