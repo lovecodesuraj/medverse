@@ -15,20 +15,16 @@ import Question from "../models/question.js"
 
 export const createQuestion=async (req,res)=>{
       const body=req.body;
-
+       console.log(body.files);
       const newQuestion=new Question({
         question:{
             question:body.question,
-            file:body.file
+            files:body.files,
         },
-        creator:"",
-        tags:body.tags,
-        votes:[],
+        creator:String,
         answers:[],
-        // createdAt :{
-        //     type: String,
-        //     default:new Date()
-        // }
+        tags: body.tags,
+        votes: 0 ,
     });
       try{
           await newQuestion.save();

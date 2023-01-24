@@ -3,16 +3,15 @@ import mongoose from "mongoose";
 const questionSchema=mongoose.Schema({
     question:{
         question:String,
-        file:"",
+        files:[String],
     },
     creator:String,
-    tags:"",
-    votes:[],
     answers:[],
-    createdAt :{
-        type: Date,
-        default:new Date(),
-    }
+    tags: [String],
+    votes: {
+        type: Number,
+        default: 0,
+    },
 });
 
  const Question = mongoose.model('Question',questionSchema);

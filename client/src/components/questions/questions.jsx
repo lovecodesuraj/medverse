@@ -1,14 +1,18 @@
 import React from "react";
+import { CircularProgress, Grid } from "@material-ui/core"
 import { useSelector } from "react-redux";
 import Question from "./question/question"
-const Questions =()=>{
-    const questions=useSelector((state)=>state.questions);
+import useStyles from './styles';
+const Questions = () => {
+    const classes=useStyles();
+    const questions = useSelector((state) => state.questions);
     // console.log(questions);
-    return<>
-    <div className="questions">
-
-       {questions.map((question)=><Question question={question}  />)}
-    </div>
+    return <>
+        { ! questions.length ? <CircularProgress /> : (
+            <Grid className={classes.container} container align alignItems="stretch" spacing={3}>
+                    {questions.map((question) => (<Grid item key={question._id} xs={12} sm={6}><Question question={question} /></Grid> ))}
+            </Grid>
+        )}
     </>
 }
 
