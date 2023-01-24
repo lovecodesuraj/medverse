@@ -19,3 +19,12 @@ export const addQuestion=(question)=> async (dispatch)=>{
              console.log(err);
       }
 }
+
+export const updateQuestion=(id,question)=>async (dispatch)=>{
+      try{
+        const {data} = await api.updateQuestion(id,question);
+        dispatch({type:"UPDATE", payload:data});
+      }catch(err){
+            console.log(err);
+      }
+}

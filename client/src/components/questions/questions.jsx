@@ -9,7 +9,7 @@ const Questions = () => {
     // console.log(questions);
     return <>
         { ! questions.length ? <CircularProgress /> : (
-            <Grid className={classes.container} container align alignItems="stretch" spacing={3}>
+            <Grid className={classes.mainContainer} container align alignItems="stretch" spacing={3}>
                     {questions.map((question) => (<Grid item key={question._id} xs={12} sm={6}><Question question={question} /></Grid> ))}
             </Grid>
         )}

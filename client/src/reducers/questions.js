@@ -1,5 +1,7 @@
 export default (questions=[],action)=>{
     switch(action.type){
+        case 'UPDATE' :
+            return questions.map(question => question._id===action.payload._id ? action.payload : question);
         case  'FETCH_ALL':
             return action.payload;
         case 'CREATE':

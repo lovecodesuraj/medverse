@@ -9,6 +9,7 @@ const AddQuestion=()=>{
     const [question,setQuestion]=useState({
         question:"",
         files:[],
+        votes:0,
         creator:"",
         tags:"",
         createdAt:new Date()
@@ -35,7 +36,7 @@ const AddQuestion=()=>{
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
            <Typography variant="h6">Add Question</Typography>
            <TextField name="question" variant="outlined" label="Question" fullWidth value={question.question} onChange={(e)=>setQuestion({...question,question:e.target.value})} />
-           <TextField name="tags" variant="outlined" label="Tags (Comma seprated)" fullWidth value={question.tags} onChange={(e)=>setQuestion({...question,tags:e.target.value})} />
+           <TextField name="tags" variant="outlined" label="Tags (Comma seperated)" fullWidth value={question.tags} onChange={(e)=>setQuestion({...question,tags:e.target.value.split(',')})} />
             <div className={classes.fileInput}>
            <FileBase type="file" multiple={true} onDone={data=>{
             var files=[];
