@@ -18,12 +18,12 @@ function App() {
 
 
   return<>
-     <Container maxWidth="lg">
+     <Container maxWidth="xlg">
       <AppBar className={classes.appBar} position='static' color='inherit'>
          <Typography variant='h2' align='center'>Medverse</Typography>
       </AppBar>
       <Grow in>
-        <Container >
+        <Container maxWidth="">
           <Grid container justify="space-between" alignItems='stretch' spacing={3} >
             <Grid item xs={12} sm={7}>
                <Questions />

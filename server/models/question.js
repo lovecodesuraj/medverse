@@ -6,7 +6,10 @@ const questionSchema=mongoose.Schema({
         files:[String],
     },
     creator:String,
-    answers:[],
+    answers:[{
+        answer:String,
+        files:[],
+    }],
     tags: [String],
     votes: {
         type: Number,

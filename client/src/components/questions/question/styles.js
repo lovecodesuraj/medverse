@@ -20,7 +20,7 @@ export default makeStyles({
     borderRadius: '15px',
     // height: '100%',
     position: 'relative',
-    width:"35vw"
+    width:"48vw"
   },
   overlay: {
     position: 'absolute',
@@ -50,4 +50,56 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  question:{
+    fontSize:"16px",
+    // fontWeight:"100",
+    lineHeight:"22.5px",
+    // color:"green"
+    color:"rgb(35, 38, 41)",
+  },
+  files:{
+     display:"flex",
+     maxWidth:"100%",
+     overflowX:"auto",
+    //  scrollbarWidth:"0"
+  },
+  showFiles:{
+  //  width:'80vw',
+  //  maxHeight:"80vh",
+    //  overflowX:"auto",
+  //  position:'absolute',
+  //  display:"flex",
+  //  flexDirection:"row",
+  //  flexWrap:"wrap",
+  //  left:"0",
+  //  top:'0'
+
+  },
+  answer:{
+    background:"linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05))",
+    borderRadius:"5px",
+    margin:"4px 2px",
+  },
+  file:{
+     minWidth:"100px",
+     minHeight:"100px",
+     margin:"2px",
+  },
+  ansFile:{
+     minWidth:"80px",
+     minHeight:"80px",
+     margin:"2px",
+  },
+  showfile:{
+    width:'800px',
+    height:"1200px",
+    margin:"2px 0",
+    display:"inline-block"
+  },
+  showAnsFile:{
+    width:'800px',
+    height:"1200px",
+    margin:"2px 0",
+    display:"inline-block"
+  }
 });
