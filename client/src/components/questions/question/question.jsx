@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, TextField } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { updateQuestion } from "../../../actions/questions";
+import { updateQuestion,deleteQuestion } from "../../../actions/questions";
 import { useDispatch } from "react-redux";
 import momemt from "moment"
 import useStyles from "./styles"
@@ -17,12 +17,9 @@ const Question = (props) => {
    // console.log(updatedQuestion);
    const dispatch = useDispatch();
    const update = () => {
-      // e.preventDefault();
       dispatch(updateQuestion(updatedQuestion._id, updatedQuestion));
    }
    const classes = useStyles();
-   // console.log("this is file array ", question.question.files)
-   // console.log(question.question)
    return <>
       <Card className={classes.card}>
          <CardContent>
@@ -50,7 +47,7 @@ const Question = (props) => {
             <div className="answers">
                {question.answers.map(answer =>
                   <CardContent className={classes.answer}>
-                     <Typography variant="h6" gutterBottom style={{fontSize:"15px",lineHeight:"22px",color:"rgb(30,30,30)",fontFamily:"sans-serif"}} >{answer.answer}</Typography>
+                     <Typography variant="body2" color="textSecondary" gutterBottom  >{answer.answer}</Typography>
                      <div className={classes.files} onDoubleClick={(e) => { showAnswerFiles ? setShowAnswerFiles(false) : setShowAnswerFiles(true) }} >
                         {answer.files.map(file => <CardMedia image={file} className={!showAnswerFiles ? classes.ansFile : classes.showAnsFile} />)}
                      </div>
@@ -88,6 +85,11 @@ const Question = (props) => {
                </div>
                <Button className={classes.buttonSubmit} type="submit" color="primary" variant="contained" size="large" fullWidth >Add Answer</Button>
             </form>
+            <Button 
+            onClick={(e)=>{e.preventDefault(); dispatch(deleteQuestion(question._id));
+            }}
+            className={classes.buttonSubmit} type="button" color="danger" variant="contained" size="large" fullWidth >Delete Question</Button>
+
          </CardContent>
       </Card>
 

@@ -1,40 +1,24 @@
-import logo from './logo.svg';
+import { Container } from "@material-ui/core";
 import './App.css';
-import {Container,AppBar,Typography,Grow,Grid} from "@material-ui/core";
-import AddQuestion from './components/forms/question/question';
-import Questions from './components/questions/questions';
 import useStyles from './styles';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getQuestions } from './actions/questions';
-
+import Navbar from './components/navbar/navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/home/home';
+import Auth from "./components/auth/auth";
 
 function App() {
-  const classes=useStyles();
-  const dispatch=useDispatch();
-  useEffect(()=>{
-      dispatch(getQuestions());
-  },[dispatch]);
-
-
-  return<>
-     <Container maxWidth="xlg">
-      <AppBar className={classes.appBar} position='static' color='inherit'>
-         <Typography variant='h2' align='center'>Medverse</Typography>
-      </AppBar>
-      <Grow in>
-        <Container maxWidth="">
-          <Grid container justify="space-between" alignItems='stretch' spacing={3} >
-            <Grid item xs={12} sm={7}>
-               <Questions />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <AddQuestion />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
-     </Container>
+  const classes = useStyles();
+  return <>
+    <BrowserRouter>
+      <Container maxWidth="xlg">
+        <Navbar />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route exact path="/auth" element={<Auth />} />
+        </Routes>
+        {/* <Home /> */}
+      </Container>
+    </BrowserRouter>
   </>
 }
 

@@ -5,7 +5,7 @@ import Question from "./question/question"
 import useStyles from './styles';
 const Questions = () => {
     const classes=useStyles();
-    const questions = useSelector((state) => state.questions);
+    const questions = useSelector((state) => state.questions);  
     // console.log(questions);
     return <>
         { ! questions.length ? <CircularProgress /> : (

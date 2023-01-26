@@ -75,8 +75,12 @@ export default makeStyles({
   //  top:'0'
 
   },
+  fileInput: {
+    width: '97%',
+    margin: '10px 0',
+  },
   answer:{
-    background:"linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05))",
+    background:"linear-gradient(rgba(0,0,0,0.03),rgba(0,0,0,0.03))",
     borderRadius:"5px",
     margin:"4px 2px",
   },

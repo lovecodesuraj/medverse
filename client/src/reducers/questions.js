@@ -6,6 +6,8 @@ export default (questions=[],action)=>{
             return action.payload;
         case 'CREATE':
             return [...questions,action.payload];
+        case 'DELETE' :
+            return questions.filter((question)=>question._id !== action.payload);
         default :
           return questions
     }

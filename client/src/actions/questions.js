@@ -28,3 +28,13 @@ export const updateQuestion=(id,question)=>async (dispatch)=>{
             console.log(err);
       }
 }
+
+export const deleteQuestion=(id)=>async (dispatch)=>{
+      try{
+         await api.deleteQuestion(id);
+         dispatch({type:"DELETE",payload:id});
+      }catch(err){
+            console.log(err);
+      }
+}
+
