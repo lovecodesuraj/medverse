@@ -4,19 +4,36 @@ import { GoogleLogin, GoogleOAuthProvider ,googleLogout } from '@react-oauth/goo
 import { Typography, Paper, Button, Avatar, Grid, Conatiner, Container, TextField } from "@material-ui/core";
 import {useNavigate} from "react-router-dom";
 import useStyles from "./styles";
-import Icon from "./icon"
+import {clientId} from "./data";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Input from "./input"
 import {useDispatch} from "react-redux";
+import {signup,signin} from "../../actions/auth"
+const initialState={firstName:"",lastName:"",email:"",password:"",confirmPassword:""};
 const Auth = () => {
+    const [formData,setFormData]=useState(initialState);
     const dispatch=useDispatch();
-    const [showPassword, setShoePassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignUp] = useState(false);
     const classes = useStyles();
     const navigate=useNavigate();
     // const isSignup = true;
-    const handleSubmit = () => { }
-    const handleChange = () => { }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(isSignup){
+             dispatch(signup(formData,navigate));
+        }else{
+            dispatch(signin(formData,navigate));
+
+        }
+    }
+    const handleChange = (e) => {
+        e.preventDefault();
+        setFormData({
+            ...formData,
+            [e.target.name]:e.target.value
+        })
+     }
     const googleSuccess = async (res) => {
         // console.log(res); 
         try {
@@ -34,9 +51,9 @@ const Auth = () => {
     }
     const swicthMode = () => {
         setIsSignUp(prev => !prev);
-        setShoePassword(false);
+        setShowPassword(false);
     };
-    const handleShowPassword = () => setShoePassword((prevShowPassword) => !prevShowPassword);
+    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
     return (
         <>
             <Container component='main' maxWidth="xs">
@@ -50,20 +67,20 @@ const Auth = () => {
                             {
                                 isSignup && (
                                     <>
-                                        <Input name="firstName" label="First Name" handleChange={handleChange} half />
-                                        <Input name="lastName" label="Last Name" handleChange={handleChange} half />
+                                        <Input name="firstName" label="First Name" value={formData.firstName} handleChange={handleChange} half />
+                                        <Input name="lastName" label="Last Name" value={formData.lastName} handleChange={handleChange} half />
                                     </>
                                 )
                             }
-                            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-                            <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-                            {isSignup && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password" />}
+                            <Input name="email" label="Email Address" value={formData.email} handleChange={handleChange} type="email" />
+                            <Input name="password" label="Password" vaule={formData.password} handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                            {isSignup && <Input name="confirmPassword" label="Confirm Password" value={formData.confirmPassword} handleChange={handleChange} type="password" />}
                         </Grid>
                         <Button type="submit" color="primary" variant="contained" fullWidth className={classes.submit}>
                             {isSignup ? 'Sign Up' : 'Sign In'}
                         </Button>
                         <Button   variant="contained" fullWidth className={classes.googleButton}>
-                        <GoogleOAuthProvider clientId="459764556147-5ge2k59ft3i3lv7it026j6ns09dhapic.apps.googleusercontent.com">
+                        <GoogleOAuthProvider clientId={clientId}>
                             <GoogleLogin
                                 onSuccess={googleSuccess}
                                 onError={googleFailure}

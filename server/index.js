@@ -3,6 +3,8 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import questionsRoutes from "./routes/questions.js"
+import authRoutes from "./routes/users.js";
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -13,6 +15,7 @@ app.use(bodyParser.urlencoded({limit:"30mb",extended:true}))
 app.use(cors())
 
 app.use("/questions",questionsRoutes);
+app.use("/users",authRoutes);
 
 const PORT = process.env.PORT || 5000 ; 
 

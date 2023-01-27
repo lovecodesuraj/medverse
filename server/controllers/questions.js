@@ -18,10 +18,11 @@ export const createQuestion = async (req, res) => {
       question: body.question,
       files: body.files,
     },
-    creator: String,
+    creator: req.userId,
     answers: [],
+    createdAt:new Date().toISOString(),
     tags: body.tags,
-    votes: 0,
+    likes: [],
   });
   try {
     await newQuestion.save();
@@ -53,4 +54,18 @@ export const deleteQuestion = async (req,res)=>{
   }catch(err){
       console.log(err);
   }
+}
+
+export const likeQuestion= async (req,res)=>{
+   const {id}=req.params;
+   if(!req.userId) return res.status(200).json({message:"Unauthenticated"});
+   const question=await Question.findById(id);
+   const index=question.likes.findIndex((id)=>id===String(req.userId));
+   if(index===-1){
+       question.likes.push(req.userId);
+   }else{
+      question.likes=question.likes.filter((id)=> id !== String(req.userId));
+   }
+   const updatedQuestion = await Question.findByIdAndUpdate(id,question,{new:true});
+   res.json(updateQuestion);
 }

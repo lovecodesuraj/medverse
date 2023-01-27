@@ -14,7 +14,7 @@ export const getQuestions=()=>async (dispatch)=>{
 export const addQuestion=(question)=> async (dispatch)=>{
       try{
           const {data}=await api.addQuestion(question);
-          dispatch({type:createImageBitmap,payload:data})
+          dispatch({type:"CREATE",payload:data})
       }catch(err){
              console.log(err);
       }

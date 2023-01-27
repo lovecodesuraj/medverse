@@ -6,15 +6,13 @@ const questionSchema=mongoose.Schema({
         files:[String],
     },
     creator:String,
+    createdAt:String,
     answers:[{
         answer:String,
         files:[],
     }],
     tags: [String],
-    votes: {
-        type: Number,
-        default: 0,
-    },
+    likes: [String],
 });
 
  const Question = mongoose.model('Question',questionSchema);

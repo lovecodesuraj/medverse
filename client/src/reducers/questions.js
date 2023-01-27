@@ -8,6 +8,8 @@ export default (questions=[],action)=>{
             return [...questions,action.payload];
         case 'DELETE' :
             return questions.filter((question)=>question._id !== action.payload);
+        case 'Add_ANSWER':
+            return questions
         default :
           return questions
     }
