@@ -34,8 +34,8 @@ const AddQuestion=()=>{
     return<>
     <Paper className={classes.paper}>
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-           <Typography variant="h6">Add Question</Typography>
-           <TextField name="question" variant="outlined" label="Question" fullWidth value={question.question} onChange={(e)=>setQuestion({...question,question:e.target.value})} />
+           <Typography variant="h6">Add Idea</Typography>
+           <TextField name="question" variant="outlined" label="Details" fullWidth value={question.question} onChange={(e)=>setQuestion({...question,question:e.target.value})} />
            <TextField name="tags" variant="outlined" label="Tags (Comma seperated)" fullWidth value={question.tags} onChange={(e)=>setQuestion({...question,tags:e.target.value.split(',')})} />
             <div className={classes.fileInput}>
            <FileBase type="file" multiple={true} onDone={data=>{

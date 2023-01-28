@@ -83,12 +83,12 @@ const Question = (props) => {
                      // console.log(question)
                   }} />
                </div>
-               <Button className={classes.buttonSubmit} type="submit" color="primary" variant="contained" size="large" fullWidth >Add Answer</Button>
+               <Button className={classes.buttonSubmit} type="submit" color="primary" variant="contained" size="large" fullWidth >Add Response</Button>
             </form>
-            <Button 
+            {/* <Button 
             onClick={(e)=>{e.preventDefault(); dispatch(deleteQuestion(question._id));
             }}
-            className={classes.buttonSubmit} type="button" color="danger" variant="contained" size="large" fullWidth >Delete Question</Button>
+            className={classes.buttonSubmit} type="button" color="danger" variant="contained" size="large" fullWidth >Delete Question</Button> */}
 
          </CardContent>
       </Card>
