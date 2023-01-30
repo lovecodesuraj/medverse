@@ -23,10 +23,10 @@ const Question = (props) => {
    return <>
       <Card className={classes.card}>
          <CardContent>
-            <Typography variant="h6" className={classes.question} gutterBottom>{question.question.question}</Typography>
+            <Typography variant="h6" className={classes.question} gutterBottom>{question.question}</Typography>
          </CardContent>
          <div className={!showQuestionFiles ? classes.files : classes.showfiles} onDoubleClick={(e) => { showQuestionFiles ? setShowQuestionFiles(false) : setShowQuestionFiles(true) }} >
-            {question.question.files.map(file => <CardMedia image={file} className={!showQuestionFiles ? classes.file : classes.showfile} />)}
+            {question.files.map(file => <CardMedia image={file} className={!showQuestionFiles ? classes.file : classes.showfile} />)}
          </div>
          <div className={classes.details}>
             <Typography variant="body2" color="textSecondary">{question.tags.map((tag) => `#${tag}`)}</Typography>

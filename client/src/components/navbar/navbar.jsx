@@ -29,10 +29,11 @@ const Navbar = () => {
                 <Typography component={Link} to="/" variant='h2' align='center' className={classes.heading}>Medverse</Typography>
             </div>
             <Toolbar className={classes.toolbar}>
+                
                 {user ?
                 (
                     <div className={classes.profile}>
-                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}>{user.result.name.charAt(0)}</Avatar>
                         <Typography variant="h6" className={classes.userName}>{user.result.name}</Typography>
                         <Button className={classes.logout} color="secondary" variant="contained" onClick={logout}>Logout</Button>
                     </div>

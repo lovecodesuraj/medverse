@@ -1,15 +1,29 @@
 
 import { makeStyles } from '@material-ui/core/styles';
-
 export default makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
+
   },
+  ask:{
+    display:"flex",
+    flexDirection:"column",
+    width:"55vw"
+  },
+  heading:{
+    fontSize:"27px",
+    fontWeight:"700",
+    fontFamily:"BlinkMacSystemFont",
+  },
+  stepsToAskQuestion:{
+    backgroundColor:"#EBF4FB",
+  },
+
   paper: {
     padding: theme.spacing(2),
-    position:"fixed",
+    // position:"fixed",
     top:'100'
   },
   form: {

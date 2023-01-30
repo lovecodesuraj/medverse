@@ -11,19 +11,29 @@ export const getQuestions = async (req, res) => {
 }
 
 
+export const getQuestionsBySearch=async (req,res)=>{
+  const {searchQuery,tags}=req.query;
+  try {
+      const title=new RegExp(searchQuery,'i');
+      const questions=await Question.find({$or :[{title},{tags:{$in:tags.split(',')}}]});
+      res.json({data:questions}); 
+  } catch (error) {
+     res.json(404).json({message:"error.message"});
+  }
+}
+
 export const createQuestion = async (req, res) => {
   const body = req.body;
   const newQuestion = new Question({
-    question: {
-      question: body.question,
-      files: body.files,
-    },
+    title:body.title,
+    question: body.question,
+    files: body.files,
     creator: req.userId,
     answers: [],
     createdAt:new Date().toISOString(),
     tags: body.tags,
     likes: [],
-  });
+   });
   try {
     await newQuestion.save();
     res.status(201).json(newQuestion);

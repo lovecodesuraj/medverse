@@ -1,10 +1,15 @@
 import mongoose from "mongoose";
 
 const questionSchema=mongoose.Schema({
-    question:{
-        question:String,
-        files:[String],
+    title :{
+        type:String,
+        default:""
     },
+    question:{
+        type:String,
+        default:"",
+    },
+    files:[String],
     creator:String,
     createdAt:String,
     answers:[{

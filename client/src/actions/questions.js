@@ -19,6 +19,15 @@ export const addQuestion=(question)=> async (dispatch)=>{
              console.log(err);
       }
 }
+export const  getQuestionsBySearch=(searchQuery)=> async (dispatch)=>{
+      try {  
+            const {data:{data}}=await api.getQuestionsBySearch(searchQuery);
+            console.log(data);
+            dispatch({type:"SEARCH_QUESTIONS",payload:data});
+      } catch (error) {
+            console.log(error);
+      }
+} 
 
 export const updateQuestion=(id,question)=>async (dispatch)=>{
       try{
