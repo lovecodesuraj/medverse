@@ -1,21 +1,28 @@
 
 import {Link} from "react-router-dom";
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Pagination,PaginationItem} from "@material-ui/lab"
 import useStyles from "./styles"
-const Pagination = () => {
+import { useDispatch ,useSelector} from "react-redux";
+import { getQuestions } from "../../actions/questions";
+const Paginate =  ({page}) => {
+  const dispatch=useDispatch();
+  const {numberOfPages}=useSelector((state)=>state.questions);
     const classes=useStyles();
+    useEffect(()=>{
+      if(page) dispatch(getQuestions(page));
+    },[page])
   return (
          <Pagination
           classes={{ul:classes.ul}}
-          count={5}
-          page={1}
+          count={2}
+          page={Number(page) || 1 }
           variant="outlined"    
           renderItem={(item)=>(
-             <PaginationItem {...item} component={Link}  to={`/questions?page=${1}`} /> 
+             <PaginationItem {...item} component={Link}  to={`/questions?page=${item.page}`} /> 
           )} 
          />
   )
 }
 
-export default Pagination
+export default Paginate

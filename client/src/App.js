@@ -14,14 +14,15 @@ function App() {
   const navigate=useNavigate();
   const classes = useStyles();
   return <>
-      <Container maxWidth="xlg">
+      <Container maxWidth="lg">
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route exact path="/auth" element={<Auth />} />
           <Route exact path="/questions/ask" element={user?<AddQuestion/>:<Auth />}/>
           <Route exact path="/questions/:id" element={<QuestionDetails />} />
-          <Route exact path="/questions/search"/>
+          <Route exact path="/questions/search" element={<Home />} />
+          {/* <Route  path="/questions?page=" element={<Home />}/> */}
         </Routes>
         {/* <Home /> */}
       </Container>

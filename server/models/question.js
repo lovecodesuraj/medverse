@@ -12,6 +12,8 @@ const questionSchema=mongoose.Schema({
     files:[String],
     creator:String,
     createdAt:String,
+    name:String,
+    picture:String,
     answers:[{
         answer:String,
         files:[],

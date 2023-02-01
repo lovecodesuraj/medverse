@@ -1,109 +1,97 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { deepPurple } from '@material-ui/core/colors';
 
-export default makeStyles({
-  media: {
-    height: 0,
-    paddingTop: '56.25%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    backgroundBlendMode: 'darken',
+
+export default makeStyles((theme)=>({
+  questionWrapper:{
+    // backgroundColor:"grey",
+    borderBottom:"0.5px solid #CBCFD3",
+      display:"flex",
+      // padding:"10px",
+      width:"100%",
+      height:"20vh",
+      // gap:"3",
+      // margin:"0",
+      justifyContent:"center",
+      alignItems:"center",
+      // borderBottom:"0.2px solid grey",
+      // borderTop:"0.2px solid grey",
   },
-  border: {
-    border: 'solid',
+  status:{
+    // width:"10vw",
+    width:"15%",
+    height:"80%",
+    // backgroundColor:"yellow",
+    display:"flex",
+    flexDirection:"column",
+    textTransform:"lowercase",
+    // width:"10vw",
+    margin:"0 20px 0 0"
+    // backgroundColor:"yellow"
   },
-  fullHeightCard: {
-    height: '100%',
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    borderRadius: '15px',
-    // height: '100%',
-    position: 'relative',
-    width:"48vw"
-  },
-  overlay: {
-    position: 'absolute',
-    top: '20px',
-    left: '20px',
-    color: 'white',
-  },
-  overlay2: {
-    position: 'absolute',
-    top: '20px',
-    right: '20px',
-    color: 'white',
-  },
-  grid: {
-    display: 'flex',
-  },
-  details: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '20px',
-  },
-  title: {
-    padding: '0 16px',
-  },
-  cardActions: {
-    padding: '0 16px 8px 16px',
-    display: 'flex',
-    justifyContent: 'space-between',
+  statusElement:{
+    textAlign:"right",
+    fontSize:'13px',
+    color:"rgb(12, 13, 14)",
+    fontFamily:"verdana",
+    // margin:"5px 0 0 0"
+
   },
   question:{
-    fontSize:"16px",
-    // fontWeight:"100",
-    lineHeight:"22.5px",
-    // color:"green"
-    color:"rgb(35, 38, 41)",
+    width:"75%",
+    height:"80%",
+    // backgroundColor:"purple"
+    // width:"50vw"
   },
-  files:{
-     display:"flex",
-     maxWidth:"100%",
-     overflowX:"auto",
-    //  scrollbarWidth:"0"
+  title:{
+  color:"rgb(10, 149, 255)",
+  fontSize:"17px",
+  lineHeight:"22.23px",
   },
-  showFiles:{
-  //  width:'80vw',
-  //  maxHeight:"80vh",
-    //  overflowX:"auto",
-  //  position:'absolute',
-  //  display:"flex",
-  //  flexDirection:"row",
-  //  flexWrap:"wrap",
-  //  left:"0",
-  //  top:'0'
-
+  tags:{
+    margin:"5px 0 0 0",
+    // border:"1px solid black",
+    display:"flex",
+    justifyContent:"space-between"
+    // alignItems:'space-between'
   },
-  fileInput: {
-    width: '97%',
-    margin: '10px 0',
+  details:{
+   fontSize:"13px",
   },
-  answer:{
-    background:"linear-gradient(rgba(0,0,0,0.03),rgba(0,0,0,0.03))",
+  span:{
+    backgroundColor:"#D0E3F1",
+    fontSize:"12px",
+    color:"rgb(57, 115, 157)",
+    padding:"5px 4px",
     borderRadius:"5px",
-    margin:"4px 2px",
+    margin:"0 2px"
   },
-  file:{
-     minWidth:"100px",
-     minHeight:"100px",
-     margin:"2px",
-  },
-  ansFile:{
-     minWidth:"80px",
-     minHeight:"80px",
-     margin:"2px",
-  },
-  showfile:{
-    width:'800px',
-    height:"1200px",
-    margin:"2px 0",
-    display:"inline-block"
-  },
-  showAnsFile:{
-    width:'800px',
-    height:"1200px",
-    margin:"2px 0",
-    display:"inline-block"
-  }
-});
+    userAndDate:{ 
+    },
+    userAndDate :{
+      // borderColor:"grey",
+      // alignSelf:"flex-end",
+      display:"flex",
+
+      justifyContent:"center",
+      alignItems:"center",
+      // backgroundColor:"yellow",
+      // float:"right"
+      // placeSelf:"right"
+      // justifySelf:"right"
+    },
+    purple: {
+      color: theme.palette.getContrastText(deepPurple[500]),
+      backgroundColor: deepPurple[500],
+      height:"20px",
+      width:"20px"
+    },
+    name:{
+      fontSize:"10px",
+      color:"rgb(57, 115, 157)",
+      padding:"5px 4px",
+      borderRadius:"5px",
+      margin:"0 3px"
+    },
+
+}));

@@ -2,20 +2,36 @@ import Question from "../models/question.js"
 import mongoose from "mongoose";
 
 export const getQuestions = async (req, res) => {
+  const {page}=req.query;
   try {
-    const questions = await Question.find();
-    res.status(200).json(questions);
+    const LIMIT=8;
+    const startIndex=(Number(page)-1)*LIMIT;
+    const total=await Question.countDocuments({});
+    const questions = await Question.find().sort({_id:-1}).limit(LIMIT).skip(startIndex);
+    const numberOfPages=Math.ceil(total/LIMIT);
+    // console.log(numberOfPages)
+    res.status(200).json({data:questions,currentPage:Number(page) || 1,numberOfPages});
+
   } catch (err) {
     res.status(404).json({ mesage: err.message });
   }
 }
 
+export const getQuestion =async(req,res)=>{
+  const {id}=req.params;
+  try {
+    const question=await Question.findById(id);
+    res.status(200).json(question);
+  } catch (error) {
+    res.status(404).json({message:error.message});
+  }
+}
 
 export const getQuestionsBySearch=async (req,res)=>{
   const {searchQuery,tags}=req.query;
   try {
-      const title=new RegExp(searchQuery,'i');
-      const questions=await Question.find({$or :[{title},{tags:{$in:tags.split(',')}}]});
+      const search=new RegExp(searchQuery,'i');
+      const questions=await Question.find({$or :[{title:search},{name:search},{tags:{$in:tags.split(',')}}]});
       res.json({data:questions}); 
   } catch (error) {
      res.json(404).json({message:"error.message"});
@@ -29,6 +45,8 @@ export const createQuestion = async (req, res) => {
     question: body.question,
     files: body.files,
     creator: req.userId,
+    name:body.name,
+    picture:body.picture,
     answers: [],
     createdAt:new Date().toISOString(),
     tags: body.tags,

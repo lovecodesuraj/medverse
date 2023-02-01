@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, TextField } from "@material-ui/core";
-import FileBase from "react-file-base64";
-import { updateQuestion,deleteQuestion } from "../../../actions/questions";
+import { Avatar, Typography } from "@material-ui/core";
+// import Moment from 'react-moment';
+import { useNavigate } from "react-router-dom";
+import moment from "moment";
+import {Link} from "react-router-dom"
+import { updateQuestion, deleteQuestion } from "../../../actions/questions";
 import { useDispatch } from "react-redux";
 import momemt from "moment"
 import useStyles from "./styles"
-const Question = (props) => {
-   const question = props.question;
+const Question = ({question}) => {
+   const navigate=useNavigate(); 
    const [updatedQuestion, setUpdatedQuestion] = useState(question);
    const [answer, setAnswer] = useState({
       answer: "",
@@ -14,21 +17,41 @@ const Question = (props) => {
    });
    const [showAnswerFiles, setShowAnswerFiles] = useState(false);
    const [showQuestionFiles, setShowQuestionFiles] = useState(false);
-   // console.log(updatedQuestion);
    const dispatch = useDispatch();
    const update = () => {
       dispatch(updateQuestion(updatedQuestion._id, updatedQuestion));
    }
+   const openQuestion=()=>{navigate(`/questions/${question._id}`)}
    const classes = useStyles();
    return <>
-      <Card className={classes.card}>
+      <div className={classes.questionWrapper} >
+         <div className={classes.status}>
+            <Typography variant="body2" className={classes.statusElement}>{`${question.likes.length} Votes`} </Typography>
+            <Typography variant="body2" className={classes.statusElement}>{question.answers.length > 1 ? `${question.answers.length} answers` : `${question.answers.length} answer`}</Typography>
+            {/* <Typography variant="body2"></Typography>      */}
+         </div>
+         <div className={classes.question}>
+            <Typography variant="h3" className={classes.title} onClick={openQuestion}><Link to="/" style={{textDecoration:"none",color:"rgb(10, 149, 255)" }}>{question?.title}</Link></Typography>
+            <Typography variant="h6" className={classes.details}>`${question?.question.slice(0,150)}...`</Typography>
+            <div className={classes.tags}>
+               <Typography variant="body2" color="textSecondary">{question.tags.map((tag) => (<span key={tag} className={classes.span}>{tag}</span>))}</Typography>
+              <div className={classes.userAndDate}>
+              <Avatar  className={classes.purple} alt={question?.name} src={question?.picture}>{question?.name?.charAt(0)}</Avatar>
+               <Typography variant="body2" className={classes.name}>{question.name}</Typography>
+               <Typography variant="body2" className={classes.name}>{moment(question.createdAt).fromNow()}</Typography>
+                
+              </div>
+            </div>
+         </div>
+      </div>
+      {/* <Card className={classes.card}>
          <CardContent>
             <Typography variant="h6" className={classes.question} gutterBottom>{question.question}</Typography>
-         </CardContent>
-         <div className={!showQuestionFiles ? classes.files : classes.showfiles} onDoubleClick={(e) => { showQuestionFiles ? setShowQuestionFiles(false) : setShowQuestionFiles(true) }} >
+         </CardContent> */}
+      {/* <div className={!showQuestionFiles ? classes.files : classes.showfiles} onDoubleClick={(e) => { showQuestionFiles ? setShowQuestionFiles(false) : setShowQuestionFiles(true) }} >
             {question.files.map(file => <CardMedia image={file} className={!showQuestionFiles ? classes.file : classes.showfile} />)}
-         </div>
-         <div className={classes.details}>
+         </div> */}
+      {/* <div className={classes.details}>
             <Typography variant="body2" color="textSecondary">{question.tags.map((tag) => `#${tag}`)}</Typography>
          </div>
          <CardActions className={classes.cardActions}>
@@ -41,8 +64,8 @@ const Question = (props) => {
             }} >
                {`Votes ${updatedQuestion.votes}`}
             </Button>
-         </CardActions>
-         <CardContent >
+         </CardActions> */}
+      {/* <CardContent >
             <Typography variant="body2">{`${question.answers.length} Answers`}</Typography>
             <div className="answers">
                {question.answers.map(answer =>
@@ -56,8 +79,8 @@ const Question = (props) => {
                )}
 
             </div>
-         </CardContent>
-         <CardContent>
+         </CardContent> */}
+      {/* <CardContent>
             <form onSubmit={async (e) => {
                e.preventDefault();
                setUpdatedQuestion({
@@ -90,8 +113,8 @@ const Question = (props) => {
             }}
             className={classes.buttonSubmit} type="button" color="danger" variant="contained" size="large" fullWidth >Delete Question</Button>
 
-         </CardContent>
-      </Card>
+         </CardContent> */}
+      {/* </Card> */}
 
 
    </>

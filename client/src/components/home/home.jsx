@@ -4,10 +4,11 @@ import { Pagination } from "@material-ui/lab";
 import Questions from "../questions/questions";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { getQuestions } from "../../actions/questions";
 import useStyles from "./styles";
 import SearchBar from "../navbar/searchbar/searchBar";
+
 const Home = () => {
   const navigate=useNavigate();
   const classes = useStyles();
@@ -19,10 +20,10 @@ const Home = () => {
   return (
     <>
       <Grow in>
-        <Container maxWidth="">
+        <Container >
           <Grid
             container
-            justify="space-between"
+            justifyContent="space-between"
             alignItems="stretch"
             spacing={3}
           >
@@ -30,13 +31,9 @@ const Home = () => {
               <Questions />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Paper elevation={6}>
-              <Button  fullWidth  variant="contained" color="primary" onClick={()=>{navigate("/questions/ask")}} >Ask Question</Button>
-              </Paper>
+              <Paper elevation={6}> 
               <SearchBar />
-            <Paper className={classes.pagination} elevation={6}>
-              <Pagination />
-            </Paper>
+              </Paper>
             </Grid>
           </Grid>
         </Container>

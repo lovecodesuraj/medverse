@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import  healthcare from "./plus-22.jpg";
 const Navbar = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
     const classes = useStyles();
@@ -15,7 +16,6 @@ const Navbar = () => {
         dispatch({type:"LOGOUT"});
         navigate("/");
         setUser(null);
-
     }
     useEffect(()=>{
         const token=user?.token;
@@ -27,6 +27,7 @@ const Navbar = () => {
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
                 <Typography component={Link} to="/" variant='h2' align='center' className={classes.heading}>Medverse</Typography>
+                <img className={classes.image} src={healthcare} alt="icon" height="60" />
             </div>
             <Toolbar className={classes.toolbar}>
                 

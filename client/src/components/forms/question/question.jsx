@@ -16,6 +16,9 @@ const AddQuestion = () => {
     creator: "",
     name: "",
     tags: "",
+    name: user?.result?.name,
+    picture:user?.result?.picture,
+
   });
 
   const clear = () => {
@@ -26,7 +29,8 @@ const AddQuestion = () => {
       files: [],
       creator: "",
       tags: "",
-      name: "",
+      name: user?.result?.name,
+      picture:user?.result?.picture,
     });
   };
 
