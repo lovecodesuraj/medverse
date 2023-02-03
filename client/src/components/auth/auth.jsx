@@ -9,7 +9,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Input from "./input"
 import {useDispatch} from "react-redux";
 import {signup,signin} from "../../actions/auth"
-const initialState={firstName:"",lastName:"",email:"",password:"",confirmPassword:""};
+import { addUser } from "../../actions/users";
+const user=JSON.parse(localStorage.getItem('profile'));
+const initialState={firstName:"",lastName:"",email:"",password:"",picture:user?.result?.picture,confirmPassword:""};
 const Auth = () => {
     const [formData,setFormData]=useState(initialState);
     const dispatch=useDispatch();
@@ -40,6 +42,9 @@ const Auth = () => {
             const result= await jwt_decode(res.credential);
             const token=res.credential;
              dispatch({type:"AUTH",data:{result,token}})
+             console.log(result);
+             const {name,email,picture,sub}=result;
+             dispatch(addUser({name,email,sub,picture}));
              navigate("/")
         } catch (error) {
             

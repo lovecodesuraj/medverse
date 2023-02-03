@@ -17,6 +17,10 @@ app.use(cors())
 app.use("/questions",questionsRoutes);
 app.use("/users",authRoutes);
 
+app.get("/",(req,res)=>{
+    res.send("server is running.");
+})
+
 const PORT = process.env.PORT || 5000 ; 
 
 mongoose.connect(process.env.CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})

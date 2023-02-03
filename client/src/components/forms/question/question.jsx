@@ -4,6 +4,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { addQuestion } from "../../../actions/questions";
 import useStyles from "./styles";
+
 import "./styles.css"
 const AddQuestion = () => {
   const classes = useStyles();
@@ -13,6 +14,7 @@ const AddQuestion = () => {
     question: "",
     files: [],
     votes: 0,
+    title:"",
     creator: "",
     name: "",
     tags: "",
@@ -20,6 +22,9 @@ const AddQuestion = () => {
     picture:user?.result?.picture,
 
   });
+  const [titleValidity,setTitleValidity]=useState(true);
+  const isTitleValid=()=>{question?.title?.length < 90 ? setTitleValidity(true):setTitleValidity(false)};
+  
 
   const clear = () => {
     // setCurrentId(0);
@@ -81,19 +86,23 @@ const AddQuestion = () => {
             variant="outlined"
             label="Title"
             fullWidth
+            error={!titleValidity}
+            helperText={!titleValidity? 'title must be short' : ""}
             value={question.title}
-            onChange={(e) =>
+            onChange={(e) =>{
               setQuestion({ ...question, title: e.target.value })
+              isTitleValid()}
             }
           />
           <TextField
             name="question"
+            multiline
             variant="outlined"
             label="Details"
             // style={{height:"100px"}}
             inputProps={{
               style: {
-                height: "120px",
+                height: "150px",
               },
             }}
             fullWidth
@@ -130,6 +139,7 @@ const AddQuestion = () => {
             className={classes.buttonSubmit}
             type="submit"
             color="primary"
+            disabled={!titleValidity}
             variant="contained"
             size="large"
             fullWidth

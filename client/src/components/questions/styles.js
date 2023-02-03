@@ -3,29 +3,27 @@ import noResultFound from "./noResultsFound.jpg"
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  mainContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap:"wrap",
-
-    flexDirection:"column"
-  },
-  smMargin: {
-    margin: theme.spacing(1),
-  },
-  actionDiv: {
-    textAlign: 'center',
+  mainContainer:{
+    display:"flex",
+    // flexDirection:"row",
+    width:"100vw",
   },
   questionsWrapper:{
-    //  height:"20vh",
+    // display:"inline",
+    // display:"flex",
+    // flexDirection:""
+    // minHeight:"10vh",
     padding:"20px",
     width:"45vw",
     border:"0.5px solid #CBCFD3"
   },
   questions:{
-    width:"100%"
+    width:"100%",
+    height:"100vh",
+    overflowY:"auto",
   },
   header:{
+    position:"sticky",
      height:"15vh",
      width:"100%",
       display:"flex",
@@ -63,9 +61,13 @@ export default makeStyles((theme) => ({
   },
   active : {
     backgroundColor:"#E3E6E8",
+    fontSize:"12px",
+    border:"1px solid #CBCFD3",
+    borderRadius:"0",
   },
   sortedBy:{
     fontSize:"27px",
+    textTransform:"capitalize",
     fontFamily:"sans-serif"
   },
   questions:{
@@ -76,16 +78,13 @@ export default makeStyles((theme) => ({
     backgroundPosition:"center",
     width:"100%",
     height:"50vh",
-    // display:'flex',
-    // alignItems:"center",
-    // justifyContent:"center",
-    // fontFamily:"sans-serif"
-    // textAlign:"center",
-    // textJustify:"center",
   },
   pagination: {
     borderRadius: 4,
     marginTop: '1rem',
     padding: '16px',
   },
+  searchBar:{
+    // width:"10vw",
+  }
 }));

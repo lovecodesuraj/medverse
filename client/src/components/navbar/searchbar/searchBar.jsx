@@ -41,20 +41,25 @@ const SearchBar = () => {
       name="search" 
       variant='outlined' 
       onChange={(e)=>setSearch(e.target.value)}  
-      label="Search" 
+      // label="Search" 
       fullWidth 
+      inputProps={{
+        style: {
+          height: "10px",
+        },
+      }}
       value={search}
       onKeyPress={handleKeyPress}
       />
-      <ChipInput 
+      {/* <ChipInput 
        styles={{margin:"10px 0"}}
-       value={tags}
+       value={tags} 
        onAdd={onAdd}
        onDelete={onDelete}
        label="Search Tags"
        variant='outlined'
-      />
-      <Button onClick={searchQuestions} variant="contained" className={classes.searchButton} color="primary"   >Search</Button>
+      /> */}
+      <Button onClick={searchQuestions} variant="outlined" className={classes.searchButton} color="primary"   >Search</Button>
     </AppBar>
   ) 
 }

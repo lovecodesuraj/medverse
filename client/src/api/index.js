@@ -19,3 +19,6 @@ export const fetchQuestion=(id)=>API.get(`/questions/${id}`)
 
 export const signin=(formData)=>API.post('/users/signin',formData);
 export const signup=(formData)=>API.post('/users/signup',formData);
+
+export const getUsers=()=>API.get("/users");
+export const addUser=(newUser)=>API.post("/users/addUser",newUser);

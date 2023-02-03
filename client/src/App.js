@@ -8,6 +8,7 @@ import Auth from "./components/auth/auth";
 import Questions from "./components/questions/questions";
 import AddQuestion from "./components/forms/question/question";
 import QuestionDetails from "./components/questions/questionDetails/questionDetails";
+import Users from "./components/users/Users";
 
 function App() {
   const user=JSON.parse(localStorage.getItem('profile'));
@@ -18,7 +19,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route exact path="/auth" element={<Auth />} />
+          <Route exact path="/questions" element={<Home />} />
+          <Route exact path="/tags" element={<Home />} />
+          <Route exact path="/users" element={<Users />} />
+          <Route exact path="/auth" element={!user ? <Auth /> : <Home />} />
           <Route exact path="/questions/ask" element={user?<AddQuestion/>:<Auth />}/>
           <Route exact path="/questions/:id" element={<QuestionDetails />} />
           <Route exact path="/questions/search" element={<Home />} />

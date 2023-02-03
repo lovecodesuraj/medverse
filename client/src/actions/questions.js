@@ -1,6 +1,6 @@
 import * as api from "../api"
 
-export const getQuestions = (page) => async (dispatch) => {
+export const getQuestions = ({page}) => async (dispatch) => {
       try {
             dispatch({ type: "START_LOADING" })
             const { data } = await api.fetchQuestions(page);

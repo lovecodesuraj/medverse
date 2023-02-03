@@ -20,15 +20,15 @@ dotenv.config();
 
 }
  export const signup=async(req,res)=>{
-    const {email,password,confirmPassword,firstName,lastName}=req.body;
+    const {email,picture,password,confirmPassword,firstName,lastName}=req.body;
     try {
         const existingUser=await User.findOne({email});
         // console.log(existingUser);
         if(existingUser) return res.status(400).json({message:"user alreday exists."});
         if(password!=confirmPassword) return res.status(400).jaon({message:"password do not match."});
         const hashedPassword= await bcrypt.hash(password,12);
-        console.log(hashedPassword);
-        const result = await User.create({email,name:`${firstName} ${lastName}`,password:hashedPassword});
+        // console.log(hashedPassword);
+        const result = await User.create({email,name:`${firstName} ${lastName}`,picture,createdAt:new Date().toISOString(),password:hashedPassword});
         const token =jwt.sign({email:result.email,id:result._id},process.env.SECRET,{expiresIn:"1h"});
         res.status(200).json({result:result,token});
 
@@ -37,3 +37,26 @@ dotenv.config();
     }
    
 }
+export const addUser=async(req,res)=>{
+    const {email,picture,name,sub}=req.body;
+    try {
+        const existingUser=await User.findOne({email});
+        if(existingUser) return res.status(400).json({message:"user alreday exists."});
+        const result = await User.create({_id:sub,email,name,picture,createdAt:new Date().toISOString()});
+        res.status(200).json(result);
+
+    } catch (error) {
+      res.status(400).json({mesage:"something went wrong"});        
+    }
+   
+}
+
+export const getUsers=async (req,res)=>{
+    try {
+        const users=await User.find().limit(20);
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(400).json({message:error?.message});
+    }
+}
+

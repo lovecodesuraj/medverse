@@ -14,28 +14,16 @@ const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getQuestions());
+    dispatch(getQuestions({sortedBy:'all'}));
   }, [dispatch]);
 
   return (
     <>
       <Grow in>
         <Container >
-          <Grid
-            container
-            justifyContent="space-between"
-            alignItems="stretch"
-            spacing={3}
-          >
-            <Grid item xs={12} sm={7}>
+            <div  >
               <Questions />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Paper elevation={6}> 
-              <SearchBar />
-              </Paper>
-            </Grid>
-          </Grid>
+            </div>
         </Container>
       </Grow>
     </>

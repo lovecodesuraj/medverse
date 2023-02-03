@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import  healthcare from "./plus-22.jpg";
+import SearchBar from "./searchbar/searchBar";
 const Navbar = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
     const classes = useStyles();
@@ -30,7 +31,7 @@ const Navbar = () => {
                 <img className={classes.image} src={healthcare} alt="icon" height="60" />
             </div>
             <Toolbar className={classes.toolbar}>
-                
+               <SearchBar /> 
                 {user ?
                 (
                     <div className={classes.profile}>
