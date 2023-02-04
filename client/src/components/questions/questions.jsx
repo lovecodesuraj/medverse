@@ -8,9 +8,7 @@ import { useSelector } from "react-redux";
 import Question from "./question/question";
 import Paginate from "../pagination/Pagination"
 import useStyles from './styles';
-import { fetchQuestion } from "../../api";
-import { getQuestions } from "../../actions/questions";
-import VerticalNavbar from "../verticalNavbar/VerticalNavbar";
+
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -19,8 +17,8 @@ const useQuery = () => {
 const Questions = () => {
     const dispatch = useDispatch();
     const query = useQuery();
-    const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
+    const page = query.get('page') || 1;
     const tags = query.get('tags');
     const classes = useStyles();
     const [activeButton, setActiveButton] = useState("allQuestionsButton");

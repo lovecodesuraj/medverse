@@ -1,10 +1,24 @@
 import { makeStyles } from "@material-ui/core";
+// import noResultFound from "./noResultsFound.jpg"
 export default makeStyles(()=>({
     mainContainer:{
         // border:"1px solid grey",
         width:"62vw",
         alignItems:"flex-start",
-        justifyContent:"center",
+        display:"flex",
+        gap:"10px",
+        flexWrap:"wrap",
+    },
+    searchButton:{
+    //    display:"flex",
+       width:"20px",
+       height:"55px",
+       
+    },
+    users:{
+        width:"62vw",
+        alignItems:"flex-start",
+        // justifyContent:"ce",
         // padding:"20px",
         // height:"80vh",
         display:"flex",
@@ -27,11 +41,23 @@ export default makeStyles(()=>({
         fontFamily:"sans-serif",
         fontWeight:"600",
         lineHeight:"25px",
+        cursor:"pointer",
     },
     email:{
         color:"rgb(106, 115, 124)",
         fontSize:"12px",
         fontFamily:"verdana",
         lineHeight:"16px",
-    }
+    },
+    noUsers:{
+        // backgroundImage:`url(${noResultFound})`,
+        // backgroundSize:"cover",
+        // backgroundPosition:"center",
+        display:'flex',
+        alignItems:"center",
+        justifyContent:"center",
+        flexDirection:"column",
+        width:"100%",
+        height:"60vh",
+      },
 }))

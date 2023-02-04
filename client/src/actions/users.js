@@ -11,6 +11,30 @@ export const getUsers=()=> async (dispatch)=>{
         console.log(error); 
     }
 }
+export const getUser=(id)=>async (dispatch)=>{
+    try {
+          dispatch({ type: "START_LOADING" })
+          const {data}=await api.fetchUser(id);
+          dispatch({type:"FETCH_USER", payload:data});
+          dispatch({ type: "END_LOADING" })
+             
+    } catch (error) {
+          console.log(error);
+    }
+}
+
+export const getUsersBySearch=(searchQuery)=> async (dispatch)=>{
+    try {
+        dispatch({ type: "START_LOADING" })
+        const {data}=await api.getUsersBySearch(searchQuery);
+        console.log(data);
+        dispatch({type:"GET_USERS",payload:data});
+        dispatch({ type: "END_LOADING" })
+    } catch (error) {
+        console.log(error); 
+    }
+}
+
 export const addUser=({newUser})=>async (dispatch)=>{
     try {
         dispatch({ type: "START_LOADING" })
@@ -20,6 +44,6 @@ export const addUser=({newUser})=>async (dispatch)=>{
         dispatch({ type: "END_LOADING" })
 
     } catch (error) {
-        
+        console.log(error);
     }
 }

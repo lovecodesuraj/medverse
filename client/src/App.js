@@ -10,6 +10,7 @@ import AddQuestion from "./components/forms/question/question";
 import QuestionDetails from "./components/questions/questionDetails/questionDetails";
 import Users from "./components/users/Users";
 import VerticalNavbar from "./components/verticalNavbar/VerticalNavbar";
+import User from "./components/users/user/User"
 import Footer from "./components/footer/Footer";
 function App() {
   const user=JSON.parse(localStorage.getItem('profile'));
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/questions" element={<Home />} />
           <Route exact path="/tags" element={<Home />} />
           <Route exact path="/users" element={<Users />} />
+          <Route exact path="/users/:id" element={<User />} />
           <Route exact path="/auth" element={!user ? <Auth /> : <Home />} />
           <Route exact path="/questions/ask" element={user?<AddQuestion/>:<Auth />}/>
           <Route exact path="/questions/:id" element={<QuestionDetails />} />

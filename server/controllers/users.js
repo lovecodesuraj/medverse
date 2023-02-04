@@ -50,6 +50,17 @@ export const addUser=async(req,res)=>{
     }
    
 }
+export const getUsersBySearch=async (req,res)=>{
+    const {searchQuery}=req.query;
+    try {
+        const search=new RegExp(searchQuery,'i');
+        const users=await User.find({$or :[{email:search},{name:search}]});
+        res.status(200).json(users); 
+    } catch (error) {
+    //    res.json(404).json({message:"error.message"});
+       res.json(404).json({message:error.message});
+    }
+  }
 
 export const getUsers=async (req,res)=>{
     try {
@@ -60,3 +71,12 @@ export const getUsers=async (req,res)=>{
     }
 }
 
+export const getUser =async(req,res)=>{
+    const {id}=req.params;
+    try {
+      const user=await User.findById(id);
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(404).json({message:error.message});
+    }
+  }

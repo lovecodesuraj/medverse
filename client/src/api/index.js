@@ -22,3 +22,5 @@ export const signup=(formData)=>API.post('/users/signup',formData);
 
 export const getUsers=()=>API.get("/users");
 export const addUser=(newUser)=>API.post("/users/addUser",newUser);
+export const getUsersBySearch=(searchQuery)=>API.get(`/users/search?searchQuery=${searchQuery|| 'none'}`);
+export const fetchUser=(id)=>API.get(`/users/${id}`)
