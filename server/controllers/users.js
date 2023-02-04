@@ -41,8 +41,8 @@ export const addUser=async(req,res)=>{
     const {email,picture,name,sub}=req.body;
     try {
         const existingUser=await User.findOne({email});
-        if(existingUser) return res.status(400).json({message:"user alreday exists."});
-        const result = await User.create({_id:sub,email,name,picture,createdAt:new Date().toISOString()});
+        if(existingUser) return res.status(400).json({message:"user already exists."});
+        const result = await User.create({password:"ilovecosmos",email,name,picture,createdAt:new Date().toISOString()});
         res.status(200).json(result);
 
     } catch (error) {

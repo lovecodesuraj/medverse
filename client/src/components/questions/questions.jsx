@@ -61,8 +61,8 @@ const Questions = () => {
     }, [questions])
     return <>
         <Container className={classes.mainContainer} >
-            <VerticalNavbar />
-            <div className={classes.questionsWrapper}>
+            {/* <VerticalNavbar /> */}
+            <Paper className={classes.questionsWrapper} elevation={6} >
                 <div className={classes.header}>
                     <div className={classes.upperHeader}>
                         <Typography varaint="h4" className={classes.sortedBy}>{sortedBy} Questions</Typography>
@@ -87,7 +87,7 @@ const Questions = () => {
                 </div>
                 {!questions.length && !isLoading ? <div className={classes.noQuestions}></div> : ""}
                 {(!searchQuery && !tags?.length) && (<Paper className={classes.pagination} elevation={6}><Paginate page={page} /></Paper>)}
-            </div>
+            </Paper>
             {/* <Paper className={classes.searchBar}elevation={6}>
                 <SearchBar />
             </Paper> */}

@@ -11,11 +11,11 @@ export const getUsers=()=> async (dispatch)=>{
         console.log(error); 
     }
 }
-export const addUser=(newUser)=>async (dispatch)=>{
+export const addUser=({newUser})=>async (dispatch)=>{
     try {
         dispatch({ type: "START_LOADING" })
         const {data}=await api.addUser(newUser);
-        console.log(data);
+        // console.log(data);
         dispatch({type:"ADD_USER",payload:data});
         dispatch({ type: "END_LOADING" })
 

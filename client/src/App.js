@@ -9,14 +9,17 @@ import Questions from "./components/questions/questions";
 import AddQuestion from "./components/forms/question/question";
 import QuestionDetails from "./components/questions/questionDetails/questionDetails";
 import Users from "./components/users/Users";
-
+import VerticalNavbar from "./components/verticalNavbar/VerticalNavbar";
+import Footer from "./components/footer/Footer";
 function App() {
   const user=JSON.parse(localStorage.getItem('profile'));
   const navigate=useNavigate();
   const classes = useStyles();
   return <>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" className={classes.app}>
         <Navbar />
+        <VerticalNavbar />
+        <Container maxWidth="lg" className={classes.main}>
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route exact path="/questions" element={<Home />} />
@@ -28,7 +31,9 @@ function App() {
           <Route exact path="/questions/search" element={<Home />} />
           {/* <Route  path="/questions?page=" element={<Home />}/> */}
         </Routes>
+        </Container>
         {/* <Home /> */}
+        {/* <Footer /> */}
       </Container>
   </>
 }

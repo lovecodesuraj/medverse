@@ -1,9 +1,12 @@
 import { makeStyles } from "@material-ui/core";
 export default makeStyles(()=>({
     toolBar:{
+        position:"sticky",
+        top:"15vh",
         width:"15vw",
         display:"flex",
         flexDirection:"column",
+        // backgroundColor:"grey"
     },
     paper:{
         width:"100%",

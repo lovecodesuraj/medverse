@@ -39,12 +39,11 @@ const Auth = () => {
     const googleSuccess = async (res) => {
         // console.log(res); 
         try {
-            const result= await jwt_decode(res.credential);
-            const token=res.credential;
-             dispatch({type:"AUTH",data:{result,token}})
-             console.log(result);
-             const {name,email,picture,sub}=result;
-             dispatch(addUser({name,email,sub,picture}));
+             const result= await jwt_decode(res.credential);
+             const token=res.credential;
+             dispatch({type:"AUTH",data:{result,token}});
+             const {name,email,picture}=result;
+             dispatch(addUser({newUser:{name,email,picture}}));
              navigate("/")
         } catch (error) {
             
@@ -90,14 +89,12 @@ const Auth = () => {
                                 onSuccess={googleSuccess}
                                 onError={googleFailure}
                                 theme="outlined"
-                                // width="360"
-                                // type="icon"
                             />
                         </GoogleOAuthProvider>
                         </Button>
 
 
-                        <Grid container justify="flex-end" >
+                        <Grid container justifyContent="flex-end" >
                             <Grid item >
                                 <Button onClick={swicthMode}>
                                     {isSignup ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
