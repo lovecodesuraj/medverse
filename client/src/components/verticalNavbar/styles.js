@@ -1,31 +1,27 @@
 import { makeStyles } from "@material-ui/core";
 export default makeStyles(()=>({
     toolBar:{
-        position:"sticky",
-        top:"15vh",
-        width:"15vw",
-        display:"flex",
-        flexDirection:"column",
-        // backgroundColor:"grey"
+        height:"90vh",
     },
-    paper:{
-        width:"100%",
+    item:{
+        width:"91%",
         display:"flex",
         alignItems:"center",
         padding:"10px",
-        margin:"3px 0 3px 0"
-    },
-    item:{
+        // marginLeft:"10px",
+        gap:"10px",
        textDecoration:"none",
        fontFamily:"sans-serif",
-       margin:"0 0 0 10px",
        textTransform:"capitalize",
        color:"#0C0D0E",
        letterSpacing:"1px",
-    //    width:"100%",
-        // height:"40px",  
-        // display:"flex",
-        // justifyContent:"center",
-        // alignItems:"center",
+       '&:hover': {
+        backgroundColor: 'rgba(0,0,0,0.1)',
+      },
+    
+    },
+    active:{
+        backgroundColor:"#F1F2F3",
+        borderRight:"2px solid grey",
     }
 }))

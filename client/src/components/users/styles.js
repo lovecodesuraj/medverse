@@ -2,12 +2,7 @@ import { makeStyles } from "@material-ui/core";
 // import noResultFound from "./noResultsFound.jpg"
 export default makeStyles(()=>({
     mainContainer:{
-        // border:"1px solid grey",
-        width:"62vw",
-        alignItems:"flex-start",
-        display:"flex",
-        gap:"10px",
-        flexWrap:"wrap",
+
     },
     searchButton:{
     //    display:"flex",
@@ -16,11 +11,7 @@ export default makeStyles(()=>({
        
     },
     users:{
-        width:"62vw",
         alignItems:"flex-start",
-        // justifyContent:"ce",
-        // padding:"20px",
-        // height:"80vh",
         display:"flex",
         gap:"10px",
         flexWrap:"wrap",

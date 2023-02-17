@@ -16,9 +16,15 @@ export const updateQuestion=(id,updatedQuestion)=>API.patch(`/questions/${id}`,u
 export const deleteQuestion=(id)=>API.delete(`/questions/${id}`);
 export const getQuestionsBySearch=(searchQuery)=>API.get(`/questions/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const fetchQuestion=(id)=>API.get(`/questions/${id}`)
+export const myQuestions=(_id)=>API.get(`/questions/myQuestions/${_id}`);
+export const myAnsweredQuestions=(_id)=>API.get(`/questions/myAnsweredQuestions/${_id}`);
+export const addAnswer=({id,answer,creator})=>API.patch(`/questions/addAnswer/${id}`,{answer,creator});
+export const addVote=({questionId,userId})=>API.patch(`/questions/addVote/${questionId}`,{userId});
+
 
 export const signin=(formData)=>API.post('/users/signin',formData);
 export const signup=(formData)=>API.post('/users/signup',formData);
+export const googleAuth=(formData)=>API.post('/users/googleAuth',formData);
 
 export const getUsers=()=>API.get("/users");
 export const addUser=(newUser)=>API.post("/users/addUser",newUser);

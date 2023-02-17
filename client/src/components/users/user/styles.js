@@ -8,4 +8,21 @@ export default makeStyles(()=>({
         gap:"10px",
         flexWrap:"wrap",
     },
+    profile:{
+        // backgroundColor:"grey",
+        display:"flex",
+
+    },
+    picture:{
+        //  border:"2px solid red",
+         width:"250px",
+         height:"200px",
+         backgroundPosition:"center",
+         backgroundRepeat:"no-repeat",
+         backgroundSize:"cover",
+
+    },
+    info:{
+
+    }
 }));

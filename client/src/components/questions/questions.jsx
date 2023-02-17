@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { CircularProgress, Paper, Button, Typography,Container } from "@material-ui/core";
+import { CircularProgress, Paper, Button, Typography, Container } from "@material-ui/core";
 import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "../navbar/searchbar/searchBar";
 import { useDispatch } from "react-redux";
@@ -86,9 +86,7 @@ const Questions = () => {
                 {!questions.length && !isLoading ? <div className={classes.noQuestions}></div> : ""}
                 {(!searchQuery && !tags?.length) && (<Paper className={classes.pagination} elevation={6}><Paginate page={page} /></Paper>)}
             </Paper>
-            {/* <Paper className={classes.searchBar}elevation={6}>
-                <SearchBar />
-            </Paper> */}
+
         </Container>
     </>
 }

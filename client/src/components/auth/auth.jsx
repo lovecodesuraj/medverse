@@ -7,8 +7,8 @@ import useStyles from "./styles";
 import {clientId} from "./data";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Input from "./input"
-import {useDispatch} from "react-redux";
-import {signup,signin} from "../../actions/auth"
+import {useDispatch, useSelector} from "react-redux";
+import {signup,signin, googleAuth} from "../../actions/auth"
 import { addUser } from "../../actions/users";
 const user=JSON.parse(localStorage.getItem('profile'));
 const initialState={firstName:"",lastName:"",email:"",password:"",picture:user?.result?.picture,confirmPassword:""};
@@ -19,6 +19,7 @@ const Auth = () => {
     const [isSignup, setIsSignUp] = useState(false);
     const classes = useStyles();
     const navigate=useNavigate();
+    const {message}=useSelector(state=>state.auth)
     // const isSignup = true;
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,7 +27,6 @@ const Auth = () => {
              dispatch(signup(formData,navigate));
         }else{
             dispatch(signin(formData,navigate));
-
         }
     }
     const handleChange = (e) => {
@@ -41,10 +41,9 @@ const Auth = () => {
         try {
              const result= await jwt_decode(res.credential);
              const token=res.credential;
-             dispatch({type:"AUTH",data:{result,token}});
-             const {name,email,picture}=result;
-             dispatch(addUser({newUser:{name,email,picture}}));
-             navigate("/")
+            //  console.log("token => ",token)
+             dispatch(googleAuth({result,token},navigate));
+            //  navigate("/")
         } catch (error) {
             
             console.log(error);
@@ -67,6 +66,7 @@ const Auth = () => {
                     </Avatar>
                     <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                     <form className={classes.form} onSubmit={handleSubmit}>
+                        <Typography variant="body2" className={classes.error}>{message}</Typography>
                         <Grid container spacing={2}>
                             {
                                 isSignup && (

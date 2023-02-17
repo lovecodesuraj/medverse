@@ -17,9 +17,13 @@ const questionSchema=mongoose.Schema({
     answers:[{
         answer:String,
         files:[],
+        picture:String,
+        creator:String,
+        createdAt:String,
+        name:String,
     }],
     tags: [String],
-    likes: [String],
+    votes: [String],
 });
 
  const Question = mongoose.model('Question',questionSchema);

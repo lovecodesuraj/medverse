@@ -9,6 +9,7 @@ import  healthcare from "./plus-22.jpg";
 import SearchBar from "./searchbar/searchBar";
 const Navbar = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
+    console.log(user);
     const classes = useStyles();
     const dispatch=useDispatch();
    const navigate=useNavigate();
@@ -35,8 +36,8 @@ const Navbar = () => {
                 {user ?
                 (
                     <div className={classes.profile}>
-                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}>{user.result.name.charAt(0)}</Avatar>
-                        <Typography variant="h6" className={classes.userName}>{user.result.name}</Typography>
+                        <Avatar className={classes.purple} alt={user?.name} src={user?.picture}>{user?.name.charAt(0)}</Avatar>
+                        <Typography variant="h6" className={classes.userName}>{user?.name}</Typography>
                         <Button className={classes.logout} color="secondary" variant="contained" onClick={logout}>Logout</Button>
                     </div>
                 ):

@@ -29,7 +29,7 @@ const Users = () => {
     dispatch(getUsers())
   }, [dispatch])
   return (
-    <Container className={classes.mainContainer}>
+    <Container lg={12} className={classes.mainContainer}>
       <Paper className={classes.searchBar} elevation={8}>
         <TextField value={search} variant="outlined" onChange={(e) => { setSearch(e.target.value) }} label="Search User" />
         <Button onClick={searchUsers} variant="contained" className={classes.searchButton}><SearchIcon /></Button>
@@ -37,11 +37,12 @@ const Users = () => {
       <Paper className={classes.users}>
         {isLoading ? (<CircularProgress />) : (
           users.map(user => <Paper elevation={6} className={classes.paper}>
-            <img src={user.picture} className={classes.picture} alt="image" />
+            {console.log("m hun rser",user.profile)}
+            <img src={user.profile?.picture} className={classes.picture} alt="image" />
             <div className="intro">
-              <Typography variant='h5' onClick={()=>userProfile(user._id)} className={classes.name}>{user.name}</Typography>
+              <Typography variant='h5' onClick={()=>userProfile(user._id)} className={classes.name}>{user.profile.name}</Typography>
               <Typography variant='body2' clasName={classes.email}>{user.email}</Typography>
-              <Typography variant='body2' className={classes.moment}>Joined {moment(user.createdAt).fromNow()}</Typography>
+              <Typography variant='body2' className={classes.moment}>Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
             </div>
           </Paper>
           ))}

@@ -1,0 +1,113 @@
+import react , { useState } from "react";
+import { CircularProgress, Paper, Typography, Button, TextField } from "@material-ui/core";
+import GreenDot from "@material-ui/icons/AccessTime";
+import moment from "moment";
+import Member from "@material-ui/icons/CardMembership";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { myQuestions } from "../../actions/questions";
+import Question from "../questions/question/question";
+import EditIcon from "@material-ui/icons/Edit"
+
+const center = {
+    diaplay: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+}
+export const ProfilePicture = ({ picture }) => {
+    console.log("m hun picture", picture)
+    return <Paper
+        style={{
+            // backgroundColor:"grey",
+            backgroundImage: `url("${picture}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            width: "200px",
+            height: "200px",
+        }}>
+
+    </Paper>
+}
+export const ProfileData = ({ user }) => {
+    return <Paper
+        style={{
+            padding: " 5px 10px"
+
+        }}
+        elevation={0}
+    >
+        <Typography variant="h4" style={{ letterSpacing: "2px", }}>{user?.profile?.name}</Typography>
+        <Typography
+            style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                margin: "10px 0"
+            }}
+        ><Member />Joined {moment(user?.profile?.createdAt).fromNow()} ago</Typography>
+        <Typography
+            style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                margin: "10px 0"
+            }}
+            variant="body2"
+        // fullWidth
+        >
+            <GreenDot /> active {moment(user?.profile?.activeStatus).fromNow()} ago
+        </Typography>
+    </Paper>
+}
+
+export const Stats = ({ stats }) => {
+    console.log("stats :",stats);
+    return <>
+        <Paper style={{ width: "200px", display: "flex", gap: "40px", padding: "20px" }}>
+            <Paper elevation={0} style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                <Typography>{stats.myQuestions.length}</Typography>
+                <Typography>questions</Typography>
+            </Paper>
+            <Paper elevation={0} style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                <Typography>{stats.myAnsweredQuestions.length}</Typography>
+                <Typography>answers</Typography>
+            </Paper>
+        </Paper>
+    </>
+}
+export const About = ({ about }) => {
+    const [editable,setEditable]=useState("false");
+    const [value,setValue]=useState(about);
+    return <>
+        <Paper style={{ display: "flex", flexDirection: "column", padding: "20px",width:"400px" }}>
+            <Typography fullWidth style={{display:"flex",justifyContent:"space-between"}} variant="h5"> <span>About</span> <EditIcon style={{width:"15px"}} onClick={()=>{}} /></Typography>
+            <TextField  style={{ border:"0",padding:"10px",fontFamily:"sans-serif", fontSize: "15px" }} value={value} onChange={(e)=>{setValue(e.target.value)}} />
+        </Paper>
+    </>
+}
+export const MyQuestions = ({ questions,answeredQuestions }) => {
+    const { isLoading } = useSelector(state => state.questions);
+    const [sortedQuestions,setSortedQuestions]=useState(questions);
+    const [activeButton, setActiveButton] = useState("myQuestionsButton");
+    useEffect(() => {
+        setSortedQuestions(questions);
+    }, [questions,answeredQuestions]);
+    return <>
+        <Paper style={{display:"flex",flexDirection:"column",gap:"10px"}} elevation={0}>
+            <Paper style={{display:"flex",gap:"10px",margin:"10px 0"}} elevation={0}>
+                <Button variant={activeButton === "myQuestionsButton" ? "contained" : "outlined"} onClick={() => { setActiveButton("myQuestionsButton"); setSortedQuestions(questions) }}>Asked Questions <span style={{position:"relative",width:"20px",height:"20px",borderRadius:"10px",bottom:"20px",left:"20px",backgroundColor:"#FFCA2C",textAlign:"center"}}>{questions.length}</span></Button>
+                <Button variant={activeButton === "myAnswersButton" ? "contained" : "outlined"} onClick={() => { setActiveButton("myAnswersButton"); setSortedQuestions(answeredQuestions) }}>Answered Questions <span style={{position:"relative",width:"20px",height:"20px",borderRadius:"10px",bottom:"20px",left:"20px",backgroundColor:"#FFCA2C",textAlign:"center"}}>{answeredQuestions.length}</span></Button>
+            </Paper>
+            <Paper>
+                {isLoading ? <CircularProgress /> : (
+                    sortedQuestions.map((question) => <Question key={question._id} question={question} />)
+                )}
+            </Paper>
+        </Paper>
+
+    </>
+}
+
+
+
+

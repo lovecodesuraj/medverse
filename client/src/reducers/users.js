@@ -12,12 +12,8 @@ export default (state={isLoading:true,users:[]},action)=>{
             }
         case "GET_USERS" :
             return {...state,users:action.payload}
-             case 'FETCH_QUESTION' :
-            return {
-                ...state,
-                question:action.payload,
-            };
         case 'FETCH_USER' :
+            console.log("m hun user",action.payload);
             return {
                 ...state,
                  user:action.payload,

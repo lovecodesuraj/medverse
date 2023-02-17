@@ -30,5 +30,10 @@ export default makeStyles((theme) => ({
     display:"flex",
     alignItems:"center",
     justifyContent:"center"
+   },
+   error:{
+    margin:"20px 0",
+    textAlign:"center",
+    color:"red",
    }
 }));

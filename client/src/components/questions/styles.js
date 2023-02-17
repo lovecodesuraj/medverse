@@ -4,15 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   mainContainer:{
+    // backgroundColor:"grey",
     display:"flex",
-    // flexDirection:"row",
-    width:"100vw",
   },
   questionsWrapper:{
-    // display:"inline",
-    // display:"flex",
-    // flexDirection:""
-    // minHeight:"10vh",
     padding:"20px",
     width:"45vw",
     border:"0.5px solid #CBCFD3"
@@ -84,7 +79,5 @@ export default makeStyles((theme) => ({
     marginTop: '1rem',
     padding: '16px',
   },
-  searchBar:{
-    // width:"10vw",
-  }
+  
 }));

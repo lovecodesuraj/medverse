@@ -18,14 +18,8 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Grow in>
-        <Container >
-            <div  >
-              <Questions />
-            </div>
-        </Container>
-      </Grow>
+    <>    
+        <Questions />
     </>
   );
 };

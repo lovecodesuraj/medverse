@@ -1,7 +1,7 @@
 import FileBase from "react-file-base64";
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { TextField, Button, Typography, Paper, CircularProgress } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 import { addQuestion } from "../../../actions/questions";
 import useStyles from "./styles";
 
@@ -18,13 +18,13 @@ const AddQuestion = () => {
     creator: "",
     name: "",
     tags: "",
-    name: user?.result?.name,
-    picture:user?.result?.picture,
+    name: user?.name,
+    picture:user?.picture,
 
   });
   const [titleValidity,setTitleValidity]=useState(true);
   const isTitleValid=()=>{question?.title?.length < 90 ? setTitleValidity(true):setTitleValidity(false)};
-  
+  const {addingQuestion} = useSelector(state=>state.questions);  
 
   const clear = () => {
     // setCurrentId(0);
@@ -85,6 +85,7 @@ const AddQuestion = () => {
             name="title"
             variant="outlined"
             label="Title"
+            required
             fullWidth
             error={!titleValidity}
             helperText={!titleValidity? 'title must be short' : ""}
@@ -97,6 +98,7 @@ const AddQuestion = () => {
           <TextField
             name="question"
             multiline
+            required
             variant="outlined"
             label="Details"
             // style={{height:"100px"}}
@@ -116,6 +118,7 @@ const AddQuestion = () => {
             variant="outlined"
             label="Tags (Comma seperated)"
             fullWidth
+            required
             value={question.tags}
             onChange={(e) =>
               setQuestion({ ...question, tags: e.target.value.split(",") })
@@ -144,7 +147,7 @@ const AddQuestion = () => {
             size="large"
             fullWidth
           >
-            {!user ? "SIGNIN TO ADD QUESTION" : "ADD QUESTION"}
+            {addingQuestion?<CircularProgress />:!user ? "SIGNIN TO ADD QUESTION" : "ADD QUESTION"}
           </Button>
           <Button
             variant="contained"

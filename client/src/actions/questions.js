@@ -15,10 +15,10 @@ export const getQuestions = ({page}) => async (dispatch) => {
 
 export const addQuestion = (question) => async (dispatch) => {
       try {
-            dispatch({ type: "START_LOADING" })
+            dispatch({ type: "START_ADDING_QUESTION" })
             const { data } = await api.addQuestion(question);
             dispatch({ type: "CREATE", payload: data })
-            dispatch({ type: "END_LOADING" })
+            dispatch({ type: "QUESTION_ADDED" })
       } catch (err) {
             console.log(err);
       }
@@ -35,7 +35,28 @@ export const getQuestionsBySearch = (searchQuery) => async (dispatch) => {
             console.log(error);
       }
 }
+export const addAnswer=({id,answer,creator})=>async (dispatch)=>{
+      try {
+            dispatch({ type: "START_ADDING_ANSWER" })
+            const {data}=await api.addAnswer({id,answer,creator});
+            dispatch({type:"ADD_ANSWER",payload:data});
+            dispatch({ type: "ANSWER_ADDED" });
 
+      } catch (error) {
+            console.log(error);
+      }
+}
+export const addVote=({questionId,userId})=>async (dispatch)=>{
+      try {
+            // dispatch({ type: "START_ADDING_ANSWER" })
+            const {data}=await api.addVote({questionId,userId});
+            dispatch({type:"ADD_ANSWER",payload:data});
+            // dispatch({ type: "ANSWER_ADDED" });
+
+      } catch (error) {
+            console.log(error);
+      }
+}
 export const updateQuestion = (id, question) => async (dispatch) => {
       try {
             const { data } = await api.updateQuestion(id, question);
@@ -48,6 +69,7 @@ export const getQuestion=(id)=>async (dispatch)=>{
       try {
             dispatch({ type: "START_LOADING" })
             const {data}=await api.fetchQuestion(id);
+            // console.log(data);
             dispatch({type:"FETCH_QUESTION", payload:data});
             dispatch({ type: "END_LOADING" })
                
@@ -67,3 +89,23 @@ export const deleteQuestion = (id) => async (dispatch) => {
       }
 }
 
+export const getMyQuestions=(_id)=>async (dispatch)=>{
+      try {
+            dispatch({ type: "START_LOADING" })
+            const {data}=await api.myQuestions(_id);
+            dispatch({ type: "MY_QUESTIONS", payload:data});
+            dispatch({ type: "END_LOADING" })
+      } catch (error) {
+            console.log(error);
+      }
+}
+export const getMyAnsweredQuestions=(_id)=>async (dispatch)=>{
+      try {
+            dispatch({ type: "START_LOADING" })
+            const {data}=await api.myAnsweredQuestions(_id);
+            dispatch({ type: "MY_ANSWERED_QUESTIONS", payload:data});
+            dispatch({ type: "END_LOADING" })
+      } catch (error) {
+            console.log(error);
+      }
+}

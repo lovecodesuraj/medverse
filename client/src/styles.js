@@ -2,17 +2,24 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   app:{
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center",
     
   },
   main:{
-    display:"flex",
-    // backgroundColor:"grey",
-   position:"relative",
-   left:"7.3vw",
-   top:"-25vh",
-  //  minHeight:"85vh",
-  //  margin:"0 0 -25vh 0",
-  marginBottom:"-25vh",
+  //  maxHeight:"90vh",
+  //  backgroundColor:"grey",
+  },
+  verticalNavbar:{
+    height:"90vh",
+    position:"sticky",
+    top:"14.5vh",
+  },
+  routes:{
+  // overflowY:"auto",
+  // height:"90vh",
+  // backgroundColor:"grey",
   },
 
   appBar: {
@@ -23,10 +30,18 @@ export default makeStyles(() => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   heading: {
     color: 'rgba(0,183,255, 1)',
   },
   image: {
     marginLeft: '15px',
   },
+  rightBar:{
+    // backgroundColor:"grey"
+    // boxShadow:"-3px -3px 3px  rgba(0,0,0,0.1)"
+    height:"90vh",
+    position:"sticky",
+    top:"14.5vh",
+  }
 }));
