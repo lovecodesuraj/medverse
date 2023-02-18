@@ -1,5 +1,15 @@
-const authReducer = (state = { authData: null,message:""}, action) => {
+const authReducer = (state = { authData: null,isLaoding:false,message:""}, action) => {
   switch (action.type) {
+    case "START_LOADING":
+      return {
+          ...state,
+          isLoading: true
+      }
+  case "END_LOADING":
+      return {
+          ...state,
+          isLoading: false
+      }
     case 'AUTH':
       const { name, email, picture } = action.data.result.profile;
       const {token}=action.data;

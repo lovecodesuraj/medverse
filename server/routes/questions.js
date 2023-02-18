@@ -15,5 +15,7 @@ router.delete("/:id",auth,deleteQuestion);
 router.get("/:id",getQuestion)
 router.patch("/addAnswer/:id",addAnswer);
 router.patch("/addVote/:id",addVote);
+router.delete("/delete/:id",deleteQuestion)
+
 
 export default router;

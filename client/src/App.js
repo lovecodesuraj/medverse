@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/questions" element={<Home />} />
             <Route exact path="/tags" element={<Tags />} />
             <Route exact path="/users" element={<Users />} />
-            <Route exact path="/users/:id" element={<User />} />
+            <Route exact path="/users/:_id" element={<User />} />
             <Route exact path="/auth" element={!user ? <Auth /> : <Home />} />
             <Route exact path="/questions/ask" element={user ? <AddQuestion /> : <Auth />} />
             <Route exact path="/questions/:id" element={<QuestionDetails />} />

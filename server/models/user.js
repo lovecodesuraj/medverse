@@ -19,8 +19,6 @@ const userSchema=mongoose.Schema({
         reputation:Number,
     },
     about:String,
-
-
 })
 
  var User=mongoose.model('User',userSchema);

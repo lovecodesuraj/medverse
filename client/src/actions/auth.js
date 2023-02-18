@@ -4,7 +4,8 @@ export const signup=(formData,navigate)=>async (dispatch)=>{
    try {
       //log in the user
       const {data}=await api.signup(formData);
-      dispatch({type:"AUTH",data:data.result});
+      console.log("data : ",data);
+      dispatch({type:"AUTH",data});
       navigate("/");
    } catch (error) {
        console.log(error);
@@ -13,11 +14,13 @@ export const signup=(formData,navigate)=>async (dispatch)=>{
 export const signin=(formData,navigate)=>async (dispatch)=>{
   try {
     //...
+    dispatch({ type: "START_LOADING" })
     const {data}=await api.signin(formData);
+    dispatch({ type: "END_LOADING" })
     if(data.message){
       dispatch({type:"AUTH_ERROR_MESSAGE",message:data.message})
     }else{
-      dispatch({type:"AUTH",data:data.result});
+      dispatch({type:"AUTH",data});
       navigate("/");
     }
   } catch (error) {

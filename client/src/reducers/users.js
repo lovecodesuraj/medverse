@@ -1,4 +1,4 @@
-export default (state={isLoading:true,users:[]},action)=>{
+export default (state={isLoading:true,user:{},me:{},users:[]},action)=>{
     switch (action.type) {
         case "START_LOADING" :
             return {
@@ -13,10 +13,14 @@ export default (state={isLoading:true,users:[]},action)=>{
         case "GET_USERS" :
             return {...state,users:action.payload}
         case 'FETCH_USER' :
-            console.log("m hun user",action.payload);
             return {
                 ...state,
                  user:action.payload,
+            };    
+        case 'ME' :
+            return {
+                ...state,
+                 me:action.payload,
             };    
         case "ADD_USER" :
             return {...state,users:[...state.users,action.payload]}

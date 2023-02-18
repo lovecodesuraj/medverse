@@ -5,8 +5,8 @@ import moment from "moment";
 import Member from "@material-ui/icons/CardMembership";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { myQuestions } from "../../actions/questions";
-import Question from "../questions/question/question";
+import { myQuestions } from "../../../actions/questions";
+import Question from "../../questions/question/question";
 import EditIcon from "@material-ui/icons/Edit"
 
 const center = {

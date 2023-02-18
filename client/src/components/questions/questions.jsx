@@ -28,9 +28,6 @@ const Questions = () => {
     // const votedQuestions=
     const user = JSON.parse(localStorage.getItem('profile'));
     const [sortedQuestions, setSortedQuestions] = useState([]);
-    // const [count,setCount]=useState(0)
-
-    // console.log(user)
     const unAnswered = (e) => {
         //  console.log(e.target.className);
         setSortedBy("Unswered");
@@ -41,13 +38,13 @@ const Questions = () => {
     const votedByYou = () => {
         setSortedBy("Voted");
         setActiveButton("votedByMeQuestionsButton")
-        setSortedQuestions(questions.filter(question => question.likes.find(like => like === user?.result?.sub || like === user?.result?._id)));
+        setSortedQuestions(questions.filter(question => question.votes.find(like => like === user?.result?.sub || like === user?.result?._id)));
         //  console.log(questions)   
     }
     const myQuestions = () => {
         setSortedBy("Your");
         setActiveButton("myQuestionsButton")
-        setSortedQuestions(questions.filter(question => question.creator === user?.result?.sub || question.creator === user?.result._id));
+        setSortedQuestions(questions.filter(question => question.creator === user?._id));
     }
     const all = () => {
         setSortedBy("All");

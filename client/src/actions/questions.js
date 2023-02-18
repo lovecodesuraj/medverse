@@ -79,10 +79,10 @@ export const getQuestion=(id)=>async (dispatch)=>{
 }
 export const deleteQuestion = (id) => async (dispatch) => {
       try {
-            dispatch({ type: "START_LOADING" })
+            dispatch({ type: "DELETING" })
             await api.deleteQuestion(id);
             dispatch({ type: "DELETE", payload: id });
-            dispatch({ type: "END_LOADING" })
+            dispatch({ type: "DELETED" })
 
       } catch (err) {
             console.log(err);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { GoogleLogin, GoogleOAuthProvider ,googleLogout } from '@react-oauth/google';
-import { Typography, Paper, Button, Avatar, Grid, Conatiner, Container, TextField } from "@material-ui/core";
+import { Typography, Paper, Button, Avatar, Grid, Conatiner, Container, TextField, CircularProgress } from "@material-ui/core";
 import {useNavigate} from "react-router-dom";
 import useStyles from "./styles";
 import {clientId} from "./data";
@@ -19,7 +19,7 @@ const Auth = () => {
     const [isSignup, setIsSignUp] = useState(false);
     const classes = useStyles();
     const navigate=useNavigate();
-    const {message}=useSelector(state=>state.auth)
+    const {message,isLoading}=useSelector(state=>state.auth)
     // const isSignup = true;
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -81,7 +81,7 @@ const Auth = () => {
                             {isSignup && <Input name="confirmPassword" label="Confirm Password" value={formData.confirmPassword} handleChange={handleChange} type="password" />}
                         </Grid>
                         <Button type="submit" color="primary" variant="contained" fullWidth className={classes.submit}>
-                            {isSignup ? 'Sign Up' : 'Sign In'}
+                           {isLoading ? <CircularProgress />: <>{isSignup ? 'Sign Up' : 'Sign In'}</>}
                         </Button>
                         <Button   variant="contained" fullWidth className={classes.googleButton}>
                         <GoogleOAuthProvider clientId={clientId}>

@@ -2,8 +2,8 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(() => ({
 
-    mainContainer: {
-      
+    questionsWrapper: {
+    //   minWidth:"50vw",
     },
     searchButton: {
         
@@ -22,7 +22,7 @@ export default makeStyles(() => ({
     },
     questionsWrapper: {
         padding: "20px",
-        width: "45vw",
+        width: "50vw",
         // border: "0.5px solid #CBCFD3"
     },
     loading: {

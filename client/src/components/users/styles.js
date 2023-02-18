@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core";
 // import noResultFound from "./noResultsFound.jpg"
 export default makeStyles(()=>({
-    mainContainer:{
-
+    maincontainer:{
+    //  width:"45vw",
+    // margin:" 0 20px "
     },
     searchButton:{
     //    display:"flex",
@@ -11,15 +12,18 @@ export default makeStyles(()=>({
        
     },
     users:{
+        padding:"20px 0",
         alignItems:"flex-start",
         display:"flex",
         gap:"10px",
+        justifyContent:"center",
         flexWrap:"wrap",
+        // width:"50vw",
     },
     paper:{
         display:"flex",
         padding:"10px",
-        width:"18vw",
+        width:"24vw",
     },
     picture:{
        width:"70px",
@@ -36,7 +40,7 @@ export default makeStyles(()=>({
     },
     email:{
         color:"rgb(106, 115, 124)",
-        fontSize:"12px",
+        fontSize:"9px",
         fontFamily:"verdana",
         lineHeight:"16px",
     },

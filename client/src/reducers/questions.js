@@ -1,4 +1,4 @@
-export default (state = { isLoading: true, question:{},myQuestions:[],myAnsweredQuestion:[], addingQuestion:false, addingAnswer: false, questions: [] }, action) => {
+export default (state = { isLoading: true,deleting:false, question:{},myQuestions:[],myAnsweredQuestion:[], addingQuestion:false, addingAnswer: false, questions: [] }, action) => {
     switch (action.type) {
         case "START_LOADING":
             return {
@@ -9,6 +9,16 @@ export default (state = { isLoading: true, question:{},myQuestions:[],myAnswered
             return {
                 ...state,
                 isLoading: false
+            }
+        case "DELETING":
+            return {
+                ...state,
+                deleting: true
+            }
+        case "DELETED":
+            return {
+                ...state,
+                deleting: false
             }
         case "START_ADDING_ANSWER":
             return {

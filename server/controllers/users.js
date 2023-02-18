@@ -18,7 +18,6 @@ export const signin = async (req, res) => {
     const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.SECRET, { expiresIn: "1h" });
     res.status(200).json({ result: existingUser, token });
   } catch (error) {
-    // console.log(error);
     res.status(500).json({ message: "Something went wrong." });
   }
 
@@ -44,7 +43,7 @@ export const signup = async (req, res) => {
       _id: randomUUID(), 
     });
     const token = jwt.sign({ email: result.profile.email, id: result._id }, process.env.SECRET, { expiresIn: "1h" });
-    res.status(200).json({ result: result, token });
+    res.status(200).json({ result, token });
 
   } catch (error) {
     console.log(error);
@@ -53,10 +52,8 @@ export const signup = async (req, res) => {
 
 }
 export const googleAuth = async (req, res) => {
-  console.log(req.body);
   const { name, email, picture, sub } = req.body.result;
   const {token}=req.body;
-// console.log("credential",credential);
 
   try {
     const existingUser = await User.findById(sub);
@@ -105,10 +102,23 @@ export const getUsers = async (req, res) => {
 
 export const getUser = async (req, res) => {
   const { id } = req.params;
+  // console.log("id",id)
   try {
-    const user = await User.findById(id);
+    const user = await User.findOne({_id:id});
     res.status(200).json(user);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
+}
+
+export const editProfile=async(req,res)=>{
+  const {_id}=req.params;
+  const {picture,about}=req.body;
+   try {
+      const user=await User.findOneAndUpdate({_id:_id},{$set:{about:about,"profile.picture":picture}}, { new: true });
+      res.status(200).json(user);      
+   } catch (error) {
+     console.log(error);
+     res.json({message:"something went wrong."});   
+   }
 }

@@ -21,7 +21,7 @@ const Users = () => {
       navigate("/users");
     }
   }
-  const userProfile=(id)=>{
+  const userProfile = (id) => {
     navigate(`/users/${id}`);
   }
   // console.log(users);
@@ -29,25 +29,27 @@ const Users = () => {
     dispatch(getUsers())
   }, [dispatch])
   return (
-    <Container lg={12} className={classes.mainContainer}>
-      <Paper className={classes.searchBar} elevation={8}>
-        <TextField value={search} variant="outlined" onChange={(e) => { setSearch(e.target.value) }} label="Search User" />
-        <Button onClick={searchUsers} variant="contained" className={classes.searchButton}><SearchIcon /></Button>
-      </Paper>
-      <Paper className={classes.users}>
-        {isLoading ? (<CircularProgress />) : (
-          users.map(user => <Paper elevation={6} className={classes.paper}>
-            {console.log("m hun rser",user.profile)}
-            <img src={user.profile?.picture} className={classes.picture} alt="image" />
-            <div className="intro">
-              <Typography variant='h5' onClick={()=>userProfile(user._id)} className={classes.name}>{user.profile.name}</Typography>
-              <Typography variant='body2' clasName={classes.email}>{user.email}</Typography>
-              <Typography variant='body2' className={classes.moment}>Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
-            </div>
-          </Paper>
-          ))}
-        {!users.length && !isLoading ? <div className={classes.noUsers}><img width="100px" src={nouser} alt="" /><Typography variant='body2'>No user found.</Typography></div> : ""}
+    <Container lg={12} >
+      <Paper className={classes.mainContainer}>
 
+        <Paper className={classes.searchBar} elevation={8}>
+          <TextField value={search} variant="outlined" onChange={(e) => { setSearch(e.target.value) }} label="Search User" />
+          <Button onClick={searchUsers} variant="contained" className={classes.searchButton}><SearchIcon /></Button>
+        </Paper>
+        <Paper className={classes.users}>
+          {isLoading ? (<CircularProgress />) : (
+            users.map(user => <Paper elevation={6} className={classes.paper}>
+              <img src={user.profile?.picture} className={classes.picture} alt="image" />
+              <div className="intro">
+                <Typography variant='h5' onClick={() => userProfile(user._id)} className={classes.name}>{user.profile.name}</Typography>
+                <Typography variant='body2' clasName={classes.email}>{user.email}</Typography>
+                <Typography variant='body2' className={classes.moment}>Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
+              </div>
+            </Paper>
+            ))}
+          {!users.length && !isLoading ? <div className={classes.noUsers}><img width="100px" src={nouser} alt="" /><Typography variant='body2'>No user found.</Typography></div> : ""}
+
+        </Paper>
       </Paper>
     </Container>
   )

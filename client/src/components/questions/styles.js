@@ -3,13 +3,10 @@ import noResultFound from "./noResultsFound.jpg"
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  mainContainer:{
-    // backgroundColor:"grey",
-    display:"flex",
-  },
+
   questionsWrapper:{
     padding:"20px",
-    width:"45vw",
+    width:"50vw",
     border:"0.5px solid #CBCFD3"
   },
   questions:{

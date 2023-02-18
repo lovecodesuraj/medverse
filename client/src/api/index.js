@@ -13,7 +13,7 @@ API.interceptors.request.use((req)=>{
 export const fetchQuestions=(page)=>API.get(`/questions?page=${page}`);
 export const addQuestion=(newQuestion)=>API.post("/questions",newQuestion);
 export const updateQuestion=(id,updatedQuestion)=>API.patch(`/questions/${id}`,updatedQuestion);
-export const deleteQuestion=(id)=>API.delete(`/questions/${id}`);
+export const deleteQuestion=(id)=>API.delete(`/questions/delete/${id}`);
 export const getQuestionsBySearch=(searchQuery)=>API.get(`/questions/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const fetchQuestion=(id)=>API.get(`/questions/${id}`)
 export const myQuestions=(_id)=>API.get(`/questions/myQuestions/${_id}`);
@@ -30,3 +30,5 @@ export const getUsers=()=>API.get("/users");
 export const addUser=(newUser)=>API.post("/users/addUser",newUser);
 export const getUsersBySearch=(searchQuery)=>API.get(`/users/search?searchQuery=${searchQuery|| 'none'}`);
 export const fetchUser=(id)=>API.get(`/users/${id}`)
+export const editProfile=({_id,picture,about})=>API.patch(`/users/dashboard/editProfile/${_id}`,{picture,about});
+
