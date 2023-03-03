@@ -15,7 +15,7 @@ const Footer = () => {
           <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Help</Link>
         </div>
       </div>
-      <div style={{ display: "flex",gap:"5px", flexDirection: "column" }}>
+      {/* <div style={{ display: "flex",gap:"5px", flexDirection: "column" }}>
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>About</Link>
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Contact Us</Link>
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Career</Link>
@@ -27,7 +27,7 @@ const Footer = () => {
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Facebook</Link>
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Linkedin</Link>
         <Link to="/" style={{ textDecoration: "none", color: "rgba(255,255,255,0.5)" }}>Instagram</Link>
-      </div>
+      </div> */}
       <span>Site design / logo © 2023 Stack Exchange Inc; <br/>user contributions licensed under CC BY-SA. rev 2023.2.17.43248</span>
     </Container>
   )

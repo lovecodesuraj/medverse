@@ -9,7 +9,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Input from "./input"
 import {useDispatch, useSelector} from "react-redux";
 import {signup,signin, googleAuth} from "../../actions/auth"
-import { addUser } from "../../actions/users";
+// import { addUser } from "../../actions/users";
+// import { sendOTP } from "./functions";
+// import axios from "axios";
 const user=JSON.parse(localStorage.getItem('profile'));
 const initialState={firstName:"",lastName:"",email:"",password:"",picture:user?.result?.picture,confirmPassword:""};
 const Auth = () => {
@@ -21,9 +23,13 @@ const Auth = () => {
     const navigate=useNavigate();
     const {message,isLoading}=useSelector(state=>state.auth)
     // const isSignup = true;
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        // validGmailId(formData.email);
         if(isSignup){
+            const OTP=Math.round(Math.random()*1000);
+            // sendOTP(OTP,formData.email);
              dispatch(signup(formData,navigate));
         }else{
             dispatch(signin(formData,navigate));
@@ -114,3 +120,5 @@ export default Auth
 
 
 // {error: 'idpiframe_initialization_failed', details: 'You have created a new client application that use…i/web/guides/gis-migration) for more information.'}
+
+// https://api.kickbox.com/v2/verify?email=bill.lumbergh@gamil.com&apikey={{YOUR_API_KEY}}

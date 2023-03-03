@@ -15,7 +15,7 @@ export const getUser=(id)=>async (dispatch)=>{
     try {
           dispatch({ type: "START_LOADING" })
           const {data}=await api.fetchUser(id);
-          console.log("user",data)
+        //   console.log("user",data)
           dispatch({type:"FETCH_USER", payload:data});
           dispatch({ type: "END_LOADING" })
              
@@ -50,7 +50,7 @@ export const getUsersBySearch=(searchQuery)=> async (dispatch)=>{
     try {
         dispatch({ type: "START_LOADING" })
         const {data}=await api.getUsersBySearch(searchQuery);
-        console.log(data);
+        // console.log("serachedusers:",data);
         dispatch({type:"GET_USERS",payload:data});
         dispatch({ type: "END_LOADING" })
     } catch (error) {

@@ -9,7 +9,7 @@ import  healthcare from "./plus-22.jpg";
 import SearchBar from "./searchbar/searchBar";
 const Navbar = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
-    console.log(user);
+    // console.log(user);
     const classes = useStyles();
     const dispatch=useDispatch();
    const navigate=useNavigate();

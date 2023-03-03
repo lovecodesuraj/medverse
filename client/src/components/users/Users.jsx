@@ -14,7 +14,8 @@ const Users = () => {
   const [search, setSearch] = useState("");
   const classes = useStyles();
   const { users, isLoading } = useSelector((state) => state.users);
-  const searchUsers = () => {
+  const searchUsers = (e) => {
+    e.preventDefault();
     if (search.trim()) {
       dispatch(getUsersBySearch(search));
     } else {
@@ -38,11 +39,11 @@ const Users = () => {
         </Paper>
         <Paper className={classes.users}>
           {isLoading ? (<CircularProgress />) : (
-            users.map(user => <Paper elevation={6} className={classes.paper}>
+            users.map((user,index) => <Paper key={index} elevation={6} className={classes.paper}>
               <img src={user.profile?.picture} className={classes.picture} alt="image" />
               <div className="intro">
                 <Typography variant='h5' onClick={() => userProfile(user._id)} className={classes.name}>{user.profile.name}</Typography>
-                <Typography variant='body2' clasName={classes.email}>{user.email}</Typography>
+                <Typography variant='body2' className={classes.email}>{user.email}</Typography>
                 <Typography variant='body2' className={classes.moment}>Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
               </div>
             </Paper>

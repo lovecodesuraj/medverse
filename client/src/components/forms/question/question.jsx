@@ -15,7 +15,7 @@ const AddQuestion = () => {
     files: [],
     votes: 0,
     title:"",
-    creator: "",
+    creator: user?._id,
     name: "",
     tags: "",
     name: user?.name,
@@ -32,9 +32,9 @@ const AddQuestion = () => {
       title:"",
       question: "",
       files: [],
-      creator: "",
+      creator: user?._id,
       tags: "",
-      name: user?.result?.name,
+      name: user?.name,
       picture:user?.result?.picture,
     });
   };
@@ -134,7 +134,7 @@ const AddQuestion = () => {
                   files = [...files, data.base64];
                 });
                 setQuestion({ ...question, files: files });
-                console.log(question);
+                // console.log(question);
               }}
             />
           </div>

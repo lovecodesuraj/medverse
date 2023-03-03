@@ -19,7 +19,6 @@ const Headlines = () => {
                 // const {page}=await function(()=>{console.log()})
                 setIsLoading(false);
                 setNews(data.articles);
-                console.log(news);
             } catch (error) {
                 console.log(error);
             }

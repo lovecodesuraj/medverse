@@ -32,12 +32,12 @@ const Question = ({question}) => {
    return <>
       <div className={classes.questionWrapper} >
          <div className={classes.status}>
-            <Typography variant="body2" className={classes.statusElement}>{`${question.votes.length} Votes`} </Typography>
+            <Typography variant="body2" className={classes.statusElement}>{question.votes.length} {question.votes.length===1?"vote" : "votes"}</Typography>
             <Typography variant="body2" className={classes.statusElement}>{question.answers.length > 1 ? `${question.answers.length} answers` : `${question.answers.length} answer`}</Typography>
             {/* <Typography variant="body2"></Typography>      */}
          </div>
          <div className={classes.question}>
-            <Typography variant="h3" className={classes.title} onClick={openQuestion}><Link to="/" style={{textDecoration:"none",color:"rgb(10, 149, 255)" }}>{question?.title}</Link></Typography>
+            <Typography variant="h3" className={classes.title} onClick={openQuestion}><Link to="/" style={{textDecoration:"none",color:"rgb(10, 149, 255)" }}>{question?.title.slice(0,70)}...</Link></Typography>
             <Typography variant="h6" className={classes.details}>{question?.question.slice(0,150)}...</Typography>
             <div className={classes.tags}>
                <Typography variant="body2" color="textSecondary">{question.tags.map((tag) => (<span key={tag} className={classes.span}>{tag}</span>))}</Typography>
@@ -48,8 +48,8 @@ const Question = ({question}) => {
                 
               </div>
             </div>
-            <Paper elevation={0} style={{display:"flex",justifyContent:"flex-end"}} fullWidth>
-                {question.creator===user?._id ? <DeleteIcon onClick={deleteThis} />:""}
+            <Paper elevation={0} style={{display:"flex",justifyContent:"flex-end"}} >
+                { question?.creator===user?._id?<> <DeleteIcon onClick={deleteThis} /> </>:""}
             </Paper>
          </div>
       </div>

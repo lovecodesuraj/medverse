@@ -23,15 +23,16 @@ const QuestionDetails = () => {
   const clear = () => { setAnswer({ answer: "", files: [] }) };
   const dispatch = useDispatch();
   const { id } = useParams();
+  // window.location.relaod();
   useEffect(() => {
     dispatch(getQuestion(id));
+    // window.location.reload();
   }, [id])
-  //  if (!question) return null;
   return <>
     {isLoading? <Paper elevation={6} className={classes.loadingPaper}>
       <CircularProgress size="7em" />
     </Paper> :
-      <div className={classes.questionWrapper} >{console.log("m hun question",question)}
+      <div className={classes.questionWrapper} >
         <div className={classes.question}>
           <Typography variant="h3" className={classes.title}>{question?.title}</Typography>
           <Typography variant="h6" className={classes.details}>{question?.question}</Typography>
@@ -46,7 +47,7 @@ const QuestionDetails = () => {
           <Typography variant="body2" className={classes.statusElement} >
             {question.votes.find(vote => vote === (user._id))
               ? <VotedIcon onClick={() => { dispatch(addVote({ questionId: question._id, userId: user._id })) }} />
-              : <VoteIcon onClick={() => { dispatch(addVote({ questionId: question._id, userId: user._id })) }} />
+              : <VoteIcon onClick={() => { user ?dispatch(addVote({ questionId: question._id, userId: user._id })) : navigate("/auth") }} />
             }
             {question.votes.length} {question.votes.length === 1 ? "Vote" : "Votes"}</Typography>
           <Typography variant="body2" className={classes.statusElement}>{question.answers.length > 1 ? `${question.answers.length} answers` : `${question.answers.length} answer`}</Typography>
@@ -103,15 +104,15 @@ const QuestionDetails = () => {
                     files = [...files, data.base64];
                   });
                   setAnswer({ ...answer, files: files });
-                  console.log(answer);
+                  // console.log(answer);
                 }}
               />
             </div>
             <Button
               className={classes.buttonSubmit}
               // type="submit"
-              onClick={(e) => { e.preventDefault(); dispatch(addAnswer({ id, answer, creator: user.result })); clear() }}
-              color="primary"
+              onClick={(e) => { e.preventDefault(); dispatch(addAnswer({ id, answer, creator: user })); clear() }}
+              color={addingAnswer ? "secondary" : "primary"}
               variant="contained"
               size="large"
               fullWidth

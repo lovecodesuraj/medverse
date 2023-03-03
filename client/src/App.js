@@ -36,7 +36,7 @@ function App() {
             <Route exact path="/questions/ask" element={user ? <AddQuestion /> : <Auth />} />
             <Route exact path="/questions/:id" element={<QuestionDetails />} />
             <Route exact path="/questions/search" element={<Home />} />
-            <Route exact path="/dashboard/:_id" element={<DashBoard />} />
+            <Route exact path="/dashboard/:_id" element={user?<DashBoard />:<Auth />} />
           </Routes>
         </Grid>
         <Grid item lg={3} className={classes.rightBar}>

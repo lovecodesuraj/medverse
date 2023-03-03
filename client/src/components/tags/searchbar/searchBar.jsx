@@ -55,9 +55,9 @@ const SearchBar = () => {
           variant='outlined'
           className={classes.chipInput}
         />
-        <Button onClick={searchQuestions} variant="contained" className={classes.searchButton} color="#888DA6"   ><SearchIcon /></Button>
+        <Button onClick={searchQuestions} variant="contained" className={classes.searchButton} color="default"   ><SearchIcon /></Button>
       </Paper>
-      <Container  className={classes.suggestions} >{suggestions.map(suggestion => <Button className={classes.tagButton} variant='contained' onClick={()=>setTags([...tags,suggestion])} >{suggestion}</Button>)}</Container>
+      <Container  className={classes.suggestions} >{suggestions.map((suggestion,index) => <Button key={index} className={classes.tagButton} variant='contained' onClick={()=>setTags([...tags,suggestion])} >{suggestion}</Button>)}</Container>
     </Container>
 
   </>

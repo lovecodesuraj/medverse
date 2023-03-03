@@ -10,15 +10,18 @@ export default makeStyles((theme) => ({
   ask:{
     display:"flex",
     flexDirection:"column",
-    width:"55vw"
+    width:"55vw",
+    // padding :"0 20px",
   },
   heading:{
     fontSize:"27px",
     fontWeight:"700",
     fontFamily:"BlinkMacSystemFont",
+    padding:"0 20px"
   },
   stepsToAskQuestion:{
     backgroundColor:"#EBF4FB",
+    padding:"0 20px"
   },
 
   paper: {

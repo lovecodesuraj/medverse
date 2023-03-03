@@ -78,7 +78,7 @@ export const About = ({ about }) => {
     // const [value,setValue]=useState(about);
     return <>
         <Paper style={{ display: "flex", flexDirection: "column", padding: "20px",width:"400px" }}>
-            <Typography fullWidth style={{display:"flex",justifyContent:"space-between"}} variant="h5"> About</Typography>
+            <Typography style={{display:"flex",justifyContent:"space-between"}} variant="h5"> About</Typography>
             <Typography  style={{fontFamily:"sans-serif", fontSize: "15px" }} >{about}</Typography>
         </Paper>
     </>
