@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from '../../../actions/users';
-import {  CircularProgress, Container, Paper, Typography } from "@material-ui/core";
+import {  CircularProgress, Container, Paper, Typography } from "@mui/material";
 import { ProfilePicture, ProfileData, Stats, About, MyQuestions } from "./parts";
 import { getMyQuestions, getMyAnsweredQuestions } from '../../../actions/questions';
 const User = () => {

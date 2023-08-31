@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import useStyles from "./styles";
-import { Paper } from '@material-ui/core';
-import HomeIcon from "@material-ui/icons/Home"
-import UsersIcon from "@material-ui/icons/VerifiedUser"
-import TagsIcon from "@material-ui/icons/LocalOffer"
-import DashBoardIcon from "@material-ui/icons/Dashboard"
-import QuestionsIcon from "@material-ui/icons/QuestionAnswer"
+import { Paper } from '@mui/material';
+import HomeIcon from "@mui/icons-material/Home"
+import UsersIcon from "@mui/icons-material/VerifiedUser"
+import TagsIcon from "@mui/icons-material/LocalOffer"
+import DashBoardIcon from "@mui/icons-material/Dashboard"
+import QuestionsIcon from "@mui/icons-material/QuestionAnswer"
 import { NavLink } from 'react-router-dom';
 const VerticalNavbar = () => {
   const [active, setActive] = useState("home");
@@ -20,6 +20,7 @@ const VerticalNavbar = () => {
       <NavLink className={classes.item} style={active==='tags'?{backgroundColor:"#F1F2F3",borderRight:"4px solid grey",}:{}} to="/tags" onClick={() => { setActive("tags") }}>  <TagsIcon /> tags</NavLink>
       <NavLink className={classes.item} style={active==='users'?{backgroundColor:"#F1F2F3",borderRight:"4px solid grey",}:{}} to="/users" onClick={() => { setActive("users") }}> <UsersIcon /> users</NavLink>
       <NavLink className={classes.item} style={active==='dashboard'?{backgroundColor:"#F1F2F3",borderRight:"4px solid grey",}:{}} to={user?`/dashboard/${user?._id}`:"/auth"}  onClick={() => { setActive("dashboard") }}> <DashBoardIcon /> dashboard</NavLink>
+      <NavLink className={classes.item} style={active==='doctor'?{backgroundColor:"#F1F2F3",borderRight:"4px solid grey",}:{}} to={user?`/doctor/`:"/auth"}  onClick={() => { setActive("doctor") }}> <DashBoardIcon /> doctor</NavLink>
     </Paper>
   )
 }

@@ -1,13 +1,13 @@
 import react , { useState } from "react";
-import { CircularProgress, Paper, Typography, Button, TextField } from "@material-ui/core";
-import GreenDot from "@material-ui/icons/AccessTime";
+import { CircularProgress, Paper, Typography, Button, TextField } from "@mui/material";
+import GreenDot from "@mui/icons-material/AccessTime";
 import moment from "moment";
-import Member from "@material-ui/icons/CardMembership";
+import Member from "@mui/icons-material/CardMembership";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { myQuestions } from "../../../actions/questions";
 import Question from "../../questions/question/question";
-import EditIcon from "@material-ui/icons/Edit"
+import EditIcon from "@mui/icons-material/Edit"
 
 const center = {
     diaplay: "flex",

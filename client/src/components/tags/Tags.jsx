@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from "./styles"
 import SearchBar from './searchbar/searchBar';
-import { CircularProgress, Paper, Button, Typography, Container } from "@material-ui/core";
+import { CircularProgress, Paper, Button, Typography, Container } from "@mui/material";
 import Question from "../questions/question/question";
 import Paginate from "../pagination/Pagination"
 

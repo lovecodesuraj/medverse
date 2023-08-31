@@ -8,6 +8,7 @@ router.get("/",getQuestions);
 router.get("/myQuestions/:_id",myQuestions);
 router.get("/myAnsweredQuestions/:_id",myAnsweredQuestions);
 router.get("/search",getQuestionsBySearch);
+
 router.post("/",auth,createQuestion);
 router.patch("/:id",auth,updateQuestion);
 router.patch("/:id/likeQuestion",auth,likeQuestion);

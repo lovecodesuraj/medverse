@@ -41,6 +41,7 @@ export default (state = { isLoading: true,deleting:false, question:{},myQuestion
                 addingQuestion: false,
             }
         case 'FETCH_ALL':
+            // console.log(action.payload.data)
             return {
                 ...state,
                 questions: action.payload.data,

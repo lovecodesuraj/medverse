@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from '../../actions/users';
-import { TextField, Button, CircularProgress, Container, Paper, Typography } from "@material-ui/core";
+import { TextField, Button, CircularProgress, Container, Paper, Typography } from "@mui/material";
 import { ProfilePicture, ProfileData, Stats, About, MyQuestions } from "./parts";
 import { getMyQuestions, getMyAnsweredQuestions } from '../../actions/questions';
 import { editProfile ,getMe} from "../../actions/users";
 import FileBase from "react-file-base64";
-import EditIcon from "@material-ui/icons/Edit"
+import EditIcon from "@mui/icons-material/Edit"
 const DashBoard = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();

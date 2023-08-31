@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API=axios.create({baseURL:"https://medverseserver.onrender.com"});
-// const API=axios.create({baseURL:"http://localhost:5000"});
+// const API=axios.create({baseURL:"https://medverseserver.onrender.com"});
+const API=axios.create({baseURL:"http://localhost:5000"});
 
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('profile')){
@@ -33,3 +33,7 @@ export const getUsersBySearch=(searchQuery)=>API.get(`/users/search?searchQuery=
 export const fetchUser=(id)=>API.get(`/users/${id}`)
 export const editProfile=({_id,picture,about})=>API.patch(`/users/dashboard/editProfile/${_id}`,{picture,about});
 
+
+//drduck
+export const askToDrDuck=({content,userId})=>API.post(`/drDuck/ask/${userId}`,{content});
+export const fetchDrDuckChat=(userId)=>API.get(`/drDuck/chat/${userId}`);

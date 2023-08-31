@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Container, TextField, Button, Paper, Typography } from '@material-ui/core'
+import { Container, TextField, Button, Paper, Typography } from '@mui/material'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import ChipInput from "material-ui-chip-input";
+import { MuiChipsInput } from "mui-chips-input";
 import useStyles from "./styles"
 import { getQuestions, getQuestionsBySearch } from '../../../actions/questions';
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@mui/icons-material/Search";
 const defaultSuggestions = ["pain", "suffering","drinking","colddrink","cock","pepsi","cola",
 "yoga","care","motivation","ayurveda","safe",'happy',"focus","green","health","hurt", "leg", "paisa", "money", "bone", "headache", "tension"]
 
@@ -46,7 +46,7 @@ const SearchBar = () => {
       <Typography variant="h4" className={classes.heading}>tags</Typography>
       <Typography variant="body2" className={classes.description}>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.</Typography>
       <Paper className={classes.searchBar} elevation={6}>
-        <ChipInput
+        <MuiChipsInput
           styles={{ margin: "10px 0" }}
           value={tags}
           onAdd={onAdd}

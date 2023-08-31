@@ -1,8 +1,8 @@
-import { CircularProgress, Paper, Button, Container, Grid, Typography, TextField } from '@material-ui/core'
+import { CircularProgress, Paper, Button, Container, Grid, Typography, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
-import SearchIcon from "@material-ui/icons/Search"
+import SearchIcon from "@mui/icons-material/Search"
 import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import { getUsers, getUsersBySearch } from '../../actions/users';

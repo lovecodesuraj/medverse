@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 // import noResultFound from "./noResultsFound.jpg"
 export default makeStyles(()=>({
     maincontainer:{

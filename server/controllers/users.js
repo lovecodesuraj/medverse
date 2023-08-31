@@ -9,9 +9,9 @@ dotenv.config();
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   try {
     const existingUser = await User.findOne({email});
-    // console.log(existingUser);
     if (!existingUser) return res.json({ message: "user not found." });
     const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
     if (!isPasswordCorrect) return res.json({ message: "Invalid Credentials." });
@@ -20,13 +20,16 @@ export const signin = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Something went wrong." });
   }
-
 }
+
+
 export const signup = async (req, res) => {
+  // if(req.body.doctor)
+  console.log(req.body);
   const { email, picture, password, confirmPassword, firstName, lastName } = req.body;
   try {
     const existingUser = await User.findOne({ email });
-    // console.log(existingUser);
+    // console.log(existingUser); 
     if (existingUser) return res.json({ message: "user already exists." });
     if (password != confirmPassword) return res.status(400).json({ message: "password do not match." });
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -81,10 +84,12 @@ export const googleAuth = async (req, res) => {
 }
 export const getUsersBySearch = async (req, res) => {
   const { searchQuery } = req.query;
+  // console.log({searchQuery})
   try {
     const search = new RegExp(searchQuery, 'i');
     const users = await User.find({ $or: [{ email: search }, { name: search }] });
-    console.log(users.length);
+    // const users=await User.find({name:searchQuery})
+    // console.log(users.length);
     res.status(200).json(users);
   } catch (error) {
     //    res.json(404).json({message:"error.message"});

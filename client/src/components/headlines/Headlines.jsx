@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Paper, Container, Typography } from "@material-ui/core"
+import { Paper, Container, Typography } from "@mui/material"
 import axios from 'axios';
 import useStyles from "./styles"
-import MoreIcon from "@material-ui/icons/Forward"
+import MoreIcon from "@mui/icons-material/Forward"
 import { Link, redirect } from 'react-router-dom';
 const Headlines = () => {
     const [news, setNews] = useState([]);

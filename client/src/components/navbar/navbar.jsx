@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Avatar, Button, Grid, Toolbar, Typography } from "@mui/material";
 import useStyles from "./styles";
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import  healthcare from "./plus-22.jpg";
+import Logo from "./Logo";
 import SearchBar from "./searchbar/searchBar";
 const Navbar = () => {
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
@@ -26,26 +26,21 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')))
     },[location])
     return <>
-        <AppBar className={classes.appBar} position='static' color='inherit'>
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to="/" variant='h2' align='center' className={classes.heading}>Medverse</Typography>
-                <img className={classes.image} src={healthcare} alt="icon" height="60" />
-            </div>
-            <Toolbar className={classes.toolbar}>
-               <SearchBar /> 
-                {user ?
-                (
-                    <div className={classes.profile}>
-                        <Avatar className={classes.purple} alt={user?.name} src={user?.picture}>{user?.name.charAt(0)}</Avatar>
-                        <Typography variant="h6" className={classes.userName}>{user?.name}</Typography>
-                        <Button className={classes.logout} color="secondary" variant="contained" onClick={logout}>Logout</Button>
-                    </div>
-                ):
-                (
-                    <Button variant="contained" color="primary" component={Link} to="/auth">Sign In</Button>
-                ) }
-            </Toolbar>
-        </AppBar>
+      <Grid
+      container
+      md={12}
+      direction="row"
+      >
+    <Grid item md={2}
+    >
+    <Logo />
+    </Grid>
+    <Grid item md={3}>
+      {/* <Link>About</Link> */}
+      {/* <Link>Products</Link> */}
+      <Link></Link>
+    </Grid>
+      </Grid>
     </>
 }
 

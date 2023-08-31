@@ -1,6 +1,6 @@
 import FileBase from "react-file-base64";
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper, CircularProgress } from "@material-ui/core";
+import { TextField, Button, Typography, Paper, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestion } from "../../../actions/questions";
 import useStyles from "./styles";

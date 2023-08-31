@@ -4,6 +4,7 @@ export const getQuestions = ({page}) => async (dispatch) => {
       try {
             dispatch({ type: "START_LOADING" })
             const { data } = await api.fetchQuestions(page);
+            // console.log(data.data[0]);
             dispatch({ type: 'FETCH_ALL', payload: data });
             dispatch({ type: "END_LOADING" })
       } catch (err) {
