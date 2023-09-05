@@ -6,8 +6,10 @@ import VideoCallIcon from "@mui/icons-material/Videocam";
 import VaultIcon from "@mui/icons-material/Lock" ;
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import MembersIcon from "@mui/icons-material/Group";
+import { useNavigate } from 'react-router-dom';
 
 const Features = () => {
+    const navigate=useNavigate();
     return (
         <>
             <Grid
@@ -38,7 +40,7 @@ const Features = () => {
                     <h4 className="home_intro_aboutText">
                         Welcome to Medverse, where healthcare meets innovation. Connect with doctors, get answers to your queries and receive quality care at your fingertips.
                     </h4>
-                    <Button size="large" variant="contained" style={{ backgroundColor: "#001E2B", color: "white", }} >Explore</Button>
+                    <Button size="large" variant="contained" style={{ backgroundColor: "#001E2B", color: "white", }} onClick={()=>{navigate(`/questions`)}} >Explore</Button>
                 </Paper>
                 <ul className="home_intro_features">
                     <li className="home_intro_feature" >

@@ -12,9 +12,10 @@ export const signup=(signupData,navigate)=>async (dispatch)=>{
        console.log(error);
    }
 }
-export const logout=()=>async(dispatch)=>{
+export const logout=(navigate)=>async(dispatch)=>{
   try {
     dispatch({type:"LOGOUT"})
+    navigate("/");
   } catch (error) {
     console.log({error});
   }

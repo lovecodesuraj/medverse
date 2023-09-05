@@ -6,16 +6,16 @@ import "./styles.css";
 import UserIcon from "@mui/icons-material/AccountBoxOutlined"
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/auth';
+import { getMe } from '../../../actions/users';
 
 const Navbar = () => {
 
   const navigate = useNavigate()
-  const dispatch=useDispatch();
-  const {authData}=useSelector(state=>state.auth);
-
-  const logoutUser=()=>{
-     dispatch(logout);
-  }
+  const dispatch = useDispatch();
+  const authData = JSON.parse(localStorage.getItem('profile'));
+  const _id  = authData?authData._id:null;
+  const openUserProfille = () => { dispatch(getMe({ _id: authData._id, navigate })); }
+  const logoutUser = () => { dispatch(logout(navigate)); }
 
   return (
     <>
@@ -29,9 +29,18 @@ const Navbar = () => {
           <div className="home_navbar_logo">medverse</div>
           <div className="home_navbar_menu">
             <ul>
-              <li><Link style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }} to="/questions">questions</Link></li>
-              <li><Link style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }} to="/questions"></Link></li>
-              <li><Link style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }} to="/questions">Messages</Link></li>
+              <li><Link
+                style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }}
+                to="/questions"
+              >questions</Link></li>
+              <li><Link
+                style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }}
+                to={`meet/${_id}`}
+              >Meet</Link></li>
+              <li><Link
+                style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }}
+                to={`/discussions/${_id}`}
+              >Discussions</Link></li>
             </ul>
           </div>
           <div className="home_navbar_account">
@@ -49,14 +58,14 @@ const Navbar = () => {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
-                    onClick={logout}
+                    onClick={openUserProfille}
                   >
                   </Paper>
-                  {/* <p className='home_navbar_userName'>{user?.name}</p> */}
+                  <Button onClick={logoutUser}>Logout</Button>
                 </>
                   :
                   <>
-                    <IconButton><UserIcon /></IconButton>
+                    <IconButton ><UserIcon /></IconButton>
                     <Button onClick={logoutUser}>Logout</Button>
                   </>
                 }

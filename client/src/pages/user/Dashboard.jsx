@@ -1,6 +1,7 @@
 import React from 'react'
+import Navbar from "../home/navbar/Navbar"
 import { Grid, Stack ,IconButton,Button} from '@mui/material';
-import Navbar from './navbar/Navbar';
+// import Navbar from './navbar/Navbar';
 import "./styles.css"
 const Dashboard = () => {
     const user = JSON.parse(localStorage.getItem('profile'));

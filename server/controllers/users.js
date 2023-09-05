@@ -4,6 +4,7 @@ import User from "../models/user.js";
 import dotenv from "dotenv"
 // import { objectID } from 'bson';
 import { randomUUID } from 'crypto';
+import PhoneBook from "../models/videoContactBook.js";
 dotenv.config();
 
 
@@ -44,6 +45,10 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
       _id: randomUUID(), 
+    });
+    await PhoneBook.create({
+       userId:result._id,
+       contacts:[]
     });
     const token = jwt.sign({ email: result.profile.email, id: result._id }, process.env.SECRET, { expiresIn: "1h" });
     res.status(200).json({ result, token });
@@ -123,6 +128,19 @@ export const editProfile=async(req,res)=>{
    try {
       const user=await User.findOneAndUpdate({_id:_id},{$set:{about:about,"profile.picture":picture}}, { new: true });
       res.status(200).json(user);      
+   } catch (error) {
+     console.log(error);
+     res.json({message:"something went wrong."});   
+   }
+}
+
+export const fetchPhoneBook=async(req,res)=>{
+  const {_id:userId}=req.params;
+  // console.log(_id)
+   try {
+      const data=await PhoneBook.find({userId});
+      console.log({data})
+      res.status(200).json(data);      
    } catch (error) {
      console.log(error);
      res.json({message:"something went wrong."});   

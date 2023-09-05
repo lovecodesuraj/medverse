@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from '../../actions/users';
 import { TextField, Button, CircularProgress, Container, Paper, Typography } from "@mui/material";
 import { ProfilePicture, ProfileData, Stats, About, MyQuestions } from "./parts";
 import { getMyQuestions, getMyAnsweredQuestions } from '../../actions/questions';
-import { editProfile ,getMe} from "../../actions/users";
+import { editProfile, getMe } from "../../actions/users";
 import FileBase from "react-file-base64";
 import EditIcon from "@mui/icons-material/Edit"
+import Navbar from '../../pages/home/navbar/Navbar';
 const DashBoard = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const { me, isloading } = useSelector(state => state.users);
   const { myQuestions, myAnsweredQuestions } = useSelector(state => state.questions);
   const loading = useSelector(state => state.questions.isloading);
@@ -18,24 +20,25 @@ const DashBoard = () => {
   const [about, setAbout] = useState(me?.about);
   const [profilePicture, setProfilePicture] = useState(me?.profile?.picture);
   const edit = () => {
-    dispatch(editProfile({ _id: me._id, picture: profilePicture, about: about }));
+    dispatch(editProfile({ _id, picture: profilePicture, about: about }));
   }
   useEffect(() => {
     // dispatch(getUser(_id));
-    dispatch(getMe(_id));
+    dispatch(getMe({_id,navigate}));
     dispatch(getMyQuestions(_id));
     dispatch(getMyAnsweredQuestions(_id));
   }, [_id])
   return <>
+    <Navbar />
     {isloading ? <CircularProgress /> : <>
       <Container >
         <Paper elevation={6} style={{ display: "flex" }}>
           <ProfilePicture picture={profilePicture || me?.profile?.picture} />
           <ProfileData user={me} />
-          {editing ? <Paper style={{ display: "flex", padding:"0 20px", flexDirection: "column", justifyContent: "center", gap: "10px" }}>
+          {editing ? <Paper style={{ display: "flex", padding: "0 20px", flexDirection: "column", justifyContent: "center", gap: "10px" }}>
             <TextField value={about} onChange={(e) => { setAbout(e.target.value) }} variant="outlined" label="About" />
             <Paper>
-               <Typography variant='body2'>Change Profile Picture</Typography>
+              <Typography variant='body2'>Change Profile Picture</Typography>
               <FileBase
                 type="file"
                 multiple={false}
@@ -49,7 +52,7 @@ const DashBoard = () => {
           {loading || !myQuestions || !myAnsweredQuestions ? <CircularProgress /> :
             <Stats stats={{ myQuestions, myAnsweredQuestions }} />
           }
-          <About about={about || me.about} />
+          <About about={about || me?.about} />
         </Paper>
         {loading || !myQuestions || !myAnsweredQuestions ? <CircularProgress /> :
           <MyQuestions questions={myQuestions} answeredQuestions={myAnsweredQuestions} />

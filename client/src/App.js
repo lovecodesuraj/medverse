@@ -13,23 +13,26 @@ import Users from "./components/users/Users";
 import VerticalNavbar from "./components/verticalNavbar/VerticalNavbar";
 import User from "./components/users/user/User"
 import Footer from "./components/footer/Footer";
+import Discussions from "./pages/discussions/Discussions";
 import Tags from "./components/tags/Tags";
 import Headlines from "./components/headlines/Headlines";
-// import DashBoard from "./components/dashboard/DashBoard";
-// import Dashboard from "./components/doctor/dashboard/Dashboard";
-import Dashboard from "./pages/user/Dashboard";
+import Dashboard from "./components/dashboard/DashBoard";
 import Auth from "./pages/auth/Auth";
-// import Auth from "./components/auth/auth";
 import Signup from "./pages/auth/signup/Signup";
 import Signin from "./pages/auth/signin/Signin";
+import io from "socket.io-client";
+import VideoChat from "./pages/VideoChat/VideoChat";
+const socket=io.connect("http://localhost:3001");
+
 function App() {
   const user = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
-  const classes = useStyles();
   return <>
     {/* <Navbar /> */}
     <Routes>
       <Route path="/" exact element={<Home />} />
+      <Route path="/discussions/:_id" element={user ? <Discussions socket={socket} /> : <Auth />}/>
+      <Route path="/meet/:_id" element={user ? <VideoChat socket={socket} /> : <Auth />}/>
       <Route path="/auth/signup" exact element={<Signup />} />
       <Route path="/auth/signin" exact element={<Signin />} />
       <Route exact path="/tags" element={<Tags />} />

@@ -32,6 +32,7 @@ export const addUser=(newUser)=>API.post("/users/addUser",newUser);
 export const getUsersBySearch=(searchQuery)=>API.get(`/users/search?searchQuery=${searchQuery|| 'none'}`);
 export const fetchUser=(id)=>API.get(`/users/${id}`)
 export const editProfile=({_id,picture,about})=>API.patch(`/users/dashboard/editProfile/${_id}`,{picture,about});
+export const fetchPhoneBook=({_id})=>API.get(`/users/fetchPhoneBook/${_id}`);
 
 
 //drduck
