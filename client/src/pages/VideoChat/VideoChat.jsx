@@ -2,13 +2,17 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { Grid } from '@mui/material';
+import {useSelector} from "react-redux"
 
 const VideoChat = () => {
 	const { _id } = useParams();
+	const user=JSON.parse(localStorage.getItem('profile'));
+	// const state=useSelector(state=>state.auth);
+	// console.log({user})
 	const myMeeting = async (element) => {
 		const appId = 1719378859;
 		const serverSecret = "145b7c003b58e01a1bdb5c49b5d9a7c7";
-		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appId, serverSecret, _id, Date.now().toString(), "tuktuk")
+		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appId, serverSecret, _id, Date.now().toString(),user?.name || "")
 		const zc = ZegoUIKitPrebuilt.create(kitToken);
 		zc.joinRoom({
 			container: element,
@@ -38,7 +42,7 @@ const VideoChat = () => {
 
 			}}
 		>
-			<div ref={myMeeting} />
+			<div ref={myMeeting}></div>
 		</div>
 	</>
 	)

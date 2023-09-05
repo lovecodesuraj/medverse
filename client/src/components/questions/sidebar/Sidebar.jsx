@@ -34,9 +34,10 @@ const Sidebar = () => {
                placeholder='Search'
 
                />
-                <Stack className='questions_sidebar_navItem'  >questions</Stack> 
-                <Stack className='questions_sidebar_navItem'>tags</Stack> 
-                <Stack className='questions_sidebar_navItem'>users</Stack> 
+                <Stack className='questions_sidebar_navItem'  onClick={()=>{navigate('/questions')}}>questions</Stack> 
+                {/* <Stack className='questions_sidebar_navItem' onClick={()=>{navigate('/questions/tags')}}>tags</Stack>  */}
+                <Stack className='questions_sidebar_navItem' onClick={()=>{navigate('/users')}}>users</Stack> 
+                <Stack className='questions_sidebar_navItem'><Button variant="contained" onClick={()=>{navigate('/questions/ask')}}>Ask Question</Button></Stack> 
         </Stack>
       </Box>
     </>

@@ -24,10 +24,10 @@ export const logout=(navigate)=>async(dispatch)=>{
 export const signin=(formData,navigate)=>async (dispatch)=>{
   try {
     //...
-    dispatch({ type: "START_LOADING" })
+    dispatch({ type: "SIGNINGIN" })
     const {data}=await api.signin(formData);
-    console.log({data})
-    dispatch({ type: "END_LOADING" })
+    // console.log({data})
+    dispatch({ type: "SIGNINGIN_FINISHED" })
     if(data.message){
       dispatch({type:"AUTH_ERROR_MESSAGE",message:data.message})
     }else{

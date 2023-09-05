@@ -35,11 +35,11 @@ const Navbar = () => {
               >questions</Link></li>
               <li><Link
                 style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }}
-                to={`meet/${_id}`}
+                to={authData ? `meet/${_id}` : '/auth/signup'}
               >Meet</Link></li>
               <li><Link
                 style={{ textTransform: "capitalize", textDecoration: "none", fontFamily: "Poppins", color: "black", fontSize: "18px" }}
-                to={`/discussions/${_id}`}
+                to={authData ? `/discussions/${_id}`:"/auth/signup"}
               >Discussions</Link></li>
             </ul>
           </div>
@@ -50,6 +50,7 @@ const Navbar = () => {
                   <Paper
                     elevation={6}
                     style={{
+                      cursor:"pointer",
                       width: "30px",
                       height: "30px",
                       borderRadius: "50%",
@@ -58,7 +59,7 @@ const Navbar = () => {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
-                    onClick={openUserProfille}
+                    onClick={()=>{navigate(`dashboard/${authData?._id}`)}}
                   >
                   </Paper>
                   <Button onClick={logoutUser}>Logout</Button>

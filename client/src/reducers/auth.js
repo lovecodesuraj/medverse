@@ -1,4 +1,4 @@
-const authReducer = (state = { authData: null, isLaoding: false, message: "" }, action) => {
+const authReducer = (state = { authData: null,signingin:false, isLaoding: false, message: "" }, action) => {
   switch (action.type) {
     case "START_LOADING":
       return {
@@ -10,6 +10,10 @@ const authReducer = (state = { authData: null, isLaoding: false, message: "" }, 
         ...state,
         isLoading: false
       }
+    case "SIGNINGIN" :
+      return {...state,signingin:true}
+    case "SIGNINGIN_FINISHED" :
+      return {...state,signingin:false}
     case 'AUTH':
       const { name, email, picture } = action.data.result.profile;
       const { token } = action.data;

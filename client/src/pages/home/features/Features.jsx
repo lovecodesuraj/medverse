@@ -9,6 +9,7 @@ import MembersIcon from "@mui/icons-material/Group";
 import { useNavigate } from 'react-router-dom';
 
 const Features = () => {
+    const authData=JSON.parse(localStorage.getItem('profile'));
     const navigate=useNavigate();
     return (
         <>
@@ -53,14 +54,14 @@ const Features = () => {
                     <li className="home_intro_feature">
                         <div
                             className="home_intro_features_paper">
-                            <IconButton size="small"><MessageIcon /></IconButton>
+                            <IconButton size="small" onClick={()=>{navigate(authData ?`/discussions/${authData?._id}`:"auth/signup")}}><MessageIcon /></IconButton>
                             <p>Instant messaging between patient and doctors. </p>
                         </div>
                     </li>
                     <li className="home_intro_feature">
                         <div
                             className="home_intro_features_paper">
-                            <IconButton size="small"><VideoCallIcon /></IconButton>
+                            <IconButton size="small" onClick={()=>{navigate(authData ?`/meet/${authData?._id}`:"auth/signup")}}><VideoCallIcon /></IconButton>
                             <p>Live time Video consulting </p>
                         </div>
                     </li>
@@ -74,7 +75,7 @@ const Features = () => {
                     <li className="home_intro_feature">
                         <div
                             className="home_intro_features_paper">
-                            <IconButton size="small"><QuestionAnswerIcon /></IconButton>
+                            <IconButton size="small" onClick={()=>{navigate("/questions")}}><QuestionAnswerIcon /></IconButton>
                             <p>Solve queries , Public questions & answers</p>
                         </div>
                     </li>

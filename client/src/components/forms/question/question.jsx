@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Paper, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestion } from "../../../actions/questions";
-import useStyles from "./styles";
-
 import "./styles.css"
 const AddQuestion = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [submitText, setSubmitText] = useState("ADD YOUR QUESTION");
   const user = JSON.parse(localStorage.getItem("profile"));
   const [question, setQuestion] = useState({
@@ -47,9 +45,9 @@ const AddQuestion = () => {
   };
   return (
     <>
-      <div className={classes.ask}>
-        <Typography variant="h2" className={classes.heading}>Ask a public question</Typography>
-        <div className={classes.stepsToAskQuestion}>
+      <div className="ask">
+        <Typography variant="h2" className="heading">Ask a public question</Typography>
+        <div className="stepsToAskQuestion">
           <Typography variant="h6">Writing a good question</Typography>
           <Typography variant="h6">
             You’re ready to ask a programming-related question and this form
@@ -74,11 +72,11 @@ const AddQuestion = () => {
             </ul>
           </div>
         </div>
-        <Paper className={classes.paper}>
+        <Paper className="paper">
         <form
           autoComplete="off"
           noValidate
-          className={`${classes.root} ${classes.form}`}
+          className='form'
           onSubmit={handleSubmit}
         >
           <TextField
@@ -124,7 +122,7 @@ const AddQuestion = () => {
               setQuestion({ ...question, tags: e.target.value.split(",") })
             }
           />
-          <div className={classes.fileInput}>
+          <div className="fileInput">
             <FileBase
               type="file"
               multiple={true}
@@ -139,7 +137,7 @@ const AddQuestion = () => {
             />
           </div>
           <Button
-            className={classes.buttonSubmit}
+            className="buttonSubmit"
             type="submit"
             color="primary"
             disabled={!titleValidity}

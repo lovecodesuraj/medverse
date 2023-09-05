@@ -4,7 +4,7 @@ import { Button,Stack,Typography } from '@mui/material';
 
 const Discussions = ({ socket }) => {
   const {_id} = useParams();
-  const [messages, setMessages] = useState(["hey","hello"]);
+  const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const send = async () =>  {
     await socket.emit("sendMessage", {room:_id,text:message});
@@ -21,7 +21,7 @@ const Discussions = ({ socket }) => {
     })
   }, [socket, _id])
   return (<>
-    helllo i am discussion
+    helllo i am discussion and i am under construction
     <Stack > 
 
         {
@@ -29,8 +29,8 @@ const Discussions = ({ socket }) => {
         }
 
     </Stack>
-    <input type="text" value={message} placeholder='message' onChange={handleChange} />
-    <Button onClick={send}>send</Button>
+    {/* <input type="text" value={message} placeholder='message' onChange={handleChange} /> */}
+    {/* <Button onClick={send}>send</Button> */}
   </>
   )
 }

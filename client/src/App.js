@@ -26,13 +26,13 @@ const socket=io.connect("http://localhost:3001");
 
 function App() {
   const user = JSON.parse(localStorage.getItem('profile'));
-  const navigate = useNavigate();
+
   return <>
     {/* <Navbar /> */}
     <Routes>
       <Route path="/" exact element={<Home />} />
-      <Route path="/discussions/:_id" element={user ? <Discussions socket={socket} /> : <Auth />}/>
-      <Route path="/meet/:_id" element={user ? <VideoChat socket={socket} /> : <Auth />}/>
+      <Route path="/discussions/:_id" element={<Discussions socket={socket} /> }/>
+      <Route path="/meet/:_id" element={<VideoChat />}/>
       <Route path="/auth/signup" exact element={<Signup />} />
       <Route path="/auth/signin" exact element={<Signin />} />
       <Route exact path="/tags" element={<Tags />} />

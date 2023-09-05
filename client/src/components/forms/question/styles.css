@@ -1,6 +1,31 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
+  .ask{
+    display:flex;
+    flex-direction:column;
+    width:55vw;
+  }
   .heading{
-    font-family: 'Roboto Condensed', sans-serif;
+    font-size:27px;
+    font-weight:700;
+    font-family:BlinkMacSystemFont;
+    padding:0 20px"
+  }
+  .stepsToAskQuestion{
+    background-color:#EBF4FB;
+    padding:0 20px"
+  }
+
+
+  .form{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .fileInput{
+    width:97%;
+    margin:10px 0;
+  }
+  .buttonSubmit{
+    margin-bottom: 10,
   }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Input, InputAdornment, Button, IconButton, TextField } from '@mui/material';
+import { Input, InputAdornment, Button, IconButton, TextField, CircularProgress } from '@mui/material';
 import VisibilityIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { Link, useNavigate } from "react-router-dom"
 import "./styles.css";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {signin} from "../../../actions/auth";
 
 
@@ -15,7 +15,7 @@ const Signin = () => {
     email: "",
     password: "",
   })
-
+   const {signingin}=useSelector(state=>state.auth);
   const [visible, setVisible] = useState(false);
   const toggleVisibility = (e) => {
     e.preventDefault();
@@ -70,10 +70,10 @@ const Signin = () => {
         />
         <Button
           fullWidth
-          variant='contained'
+          variant={signingin ? "outlined":"contained"}
           color="primary"
           onClick={submit}
-        >signin</Button>
+        >{signingin ? <CircularProgress />:"Signin"}</Button>
         <p style={{ color: "white", fontSize: "16px", width: "100%", fontFamily: "Roboto" }}>Don't have an account <Link style={{ color: "white" }} to="/auth/signup">Signup</Link></p>
       </div>
     </div>
