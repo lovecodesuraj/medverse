@@ -1,21 +1,17 @@
 import { Container, Paper } from "@mui/material";
 import './App.css';
 // import { Grid } from "@mat"
-import useStyles from './styles';
-import Navbar from './components/navbar/navbar';
+// import useStyles from './styles';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/home/home';
-// import Auth from "./components/auth/auth";
 import Questions from "./components/questions/questions";
 import AddQuestion from "./components/forms/question/question";
 import QuestionDetails from "./components/questions/questionDetails/questionDetails";
 import Users from "./components/users/Users";
-import VerticalNavbar from "./components/verticalNavbar/VerticalNavbar";
 import User from "./components/users/user/User"
 import Footer from "./components/footer/Footer";
 import Discussions from "./pages/discussions/Discussions";
 import Tags from "./components/tags/Tags";
-import Headlines from "./components/headlines/Headlines";
 import Dashboard from "./components/dashboard/DashBoard";
 import Auth from "./pages/auth/Auth";
 import Signup from "./pages/auth/signup/Signup";

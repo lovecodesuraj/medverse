@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { CircularProgress, Paper, Button, Box, Typography, Container } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
-import SearchBar from "../navbar/searchbar/searchBar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Question from "./question/question";
-import Paginate from "../pagination/Pagination"
 // import useStyles from './styles';
 import { Grid } from "@mui/material";
 import Sidebar from "./sidebar/Sidebar";

@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search"
 import { useDispatch, useSelector } from "react-redux";
-import useStyles from "./styles";
+import  "./styles.css";
 import { getUsers, getUsersBySearch } from '../../actions/users';
 import nouser from "./noUser.png";
 import { useSearchParams } from 'react-router-dom';
@@ -12,7 +12,6 @@ const Users = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const classes = useStyles();
   const { users, isLoading } = useSelector((state) => state.users);
   const searchUsers = (e) => {
     e.preventDefault();
@@ -31,24 +30,24 @@ const Users = () => {
   }, [dispatch])
   return (
     <Container lg={12} >
-      <Paper className={classes.mainContainer}>
+      <Paper className="mainContainer">
 
-        <Paper className={classes.searchBar} elevation={8}>
+        <Paper className="searchBar" elevation={8}>
           <TextField value={search} variant="outlined" onChange={(e) => { setSearch(e.target.value) }} label="Search User" />
-          <Button onClick={searchUsers} variant="contained" className={classes.searchButton}><SearchIcon /></Button>
+          <Button onClick={searchUsers} variant="contained" className="searchButton"><SearchIcon /></Button>
         </Paper>
-        <Paper className={classes.users}>
+        <Paper className="users">
           {isLoading ? (<CircularProgress />) : (
-            users.map((user,index) => <Paper key={index} elevation={6} className={classes.paper}>
-              <img src={user.profile?.picture} className={classes.picture} alt="image" />
+            users.map((user,index) => <Paper key={index} elevation={6} className="paper">
+              <img src={user.profile?.picture} className="picture" alt="image" />
               <div className="intro">
-                <Typography variant='h5' onClick={() => userProfile(user._id)} className={classes.name}>{user.profile.name}</Typography>
-                <Typography variant='body2' className={classes.email}>{user.email}</Typography>
-                <Typography variant='body2' className={classes.moment}>Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
+                <Typography variant='h5' onClick={() => userProfile(user._id)} className="name">{user.profile.name}</Typography>
+                <Typography variant='body2' className="email">{user.email}</Typography>
+                <Typography variant='body2' className="moment">Joined {moment(user.profile?.createdAt).fromNow()}</Typography>
               </div>
             </Paper>
             ))}
-          {!users.length && !isLoading ? <div className={classes.noUsers}><img width="100px" src={nouser} alt="" /><Typography variant='body2'>No user found.</Typography></div> : ""}
+          {!users.length && !isLoading ? <div className="noUsers"><img width="100px" src={nouser} alt="" /><Typography variant='body2'>No user found.</Typography></div> : ""}
 
         </Paper>
       </Paper>
