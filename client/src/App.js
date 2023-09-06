@@ -18,7 +18,7 @@ import Signup from "./pages/auth/signup/Signup";
 import Signin from "./pages/auth/signin/Signin";
 import io from "socket.io-client";
 import VideoChat from "./pages/VideoChat/VideoChat";
-const socket=io.connect("http://localhost:3001");
+// const socket=io.connect("http://localhost:3001");
 
 function App() {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -27,7 +27,7 @@ function App() {
     {/* <Navbar /> */}
     <Routes>
       <Route path="/" exact element={<Home />} />
-      <Route path="/discussions/:_id" element={<Discussions socket={socket} /> }/>
+      <Route path="/discussions/:_id" element={<Discussions /> }/>
       <Route path="/meet/:_id" element={<VideoChat />}/>
       <Route path="/auth/signup" exact element={<Signup />} />
       <Route path="/auth/signin" exact element={<Signin />} />
