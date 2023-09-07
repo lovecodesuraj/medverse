@@ -5,20 +5,16 @@
   .questionWrapper{
     border-bottom: 0.5px solid grey;
     display: flex;
-    width: 100%;
-    /* padding: 10px; */
-    /* height: 20vh; */
     justify-content: center;
     align-items: center;
+    /* flex-direction: row; */
     margin: 10px;
+    overflow: auto;
   }
-  .status{
-    width: 15%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
+  .question_status{
+    height: 2vh;
     text-transform: lowercase;
-     margin: 0 20px 0 0;
+    /* margin: 0 20px 0 0; */
   }
     .statusElement{
     text-align: light;

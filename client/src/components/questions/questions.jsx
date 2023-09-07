@@ -35,16 +35,13 @@ const Questions = () => {
         // setSortedQuestions(questions);
     }, [])
     return <>
-        <Grid container md={12} style={{ backgroundColor: "#1A2734", height: "100vh", overflowY: "hidden" }}>
+        <Grid container md={12} style={{ backgroundColor: "#1A2734", height: "100vh", overflow: "hidden" }}>
             <Grid item md={2}>
                 <Sidebar />
             </Grid>
             <Grid item md={6.5}>
-                <Box sx={{}} >
                     {questions.map((question) => <Question key={question._id} question={question} />)
                     }
-                    {/* {questions.length} */}
-                </Box>
             </Grid>
             <Grid item md={3.5}>
                 <Chatbox />
