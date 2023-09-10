@@ -14,12 +14,14 @@ export const getQuestions = ({page}) => async (dispatch) => {
       //  const action = {type:'FETCH_ALL',payload: []}
 }
 
-export const addQuestion = (question) => async (dispatch) => {
+export const addQuestion = ({question,navigate}) => async (dispatch) => {
       try {
             dispatch({ type: "START_ADDING_QUESTION" })
             const { data } = await api.addQuestion(question);
+            console.log({data})
             dispatch({ type: "CREATE", payload: data })
             dispatch({ type: "QUESTION_ADDED" })
+            navigate('/questions');
       } catch (err) {
             console.log(err);
       }

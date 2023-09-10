@@ -17,7 +17,7 @@ export const ask = async (req, res) => {
     // console.log({content})
 
     try {
-        const openaiResponse={data:{choices:[{message:{content:"hello i am chattu."}}]}};
+        const openaiResponse={data:{choices:[{message:{content:"hello I am chatbot powered by openAI. Medverse have used my quota , wait for sometime I will be ready to help you"}}]}};
         const chatExists = await DrDuckChat.findOne({ userId });
         if (!chatExists) {
             await DrDuckChat.create({

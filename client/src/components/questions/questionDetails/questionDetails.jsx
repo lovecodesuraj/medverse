@@ -13,6 +13,7 @@ import  "./styles.css";
 import VotedIcon from "@mui/icons-material/Favorite";
 import { addAnswer, addVote } from '../../../actions/questions';
 import { getQuestion } from '../../../actions/questions';
+import Navbar from '../../../pages/home/navbar/Navbar';
 const QuestionDetails = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -29,19 +30,20 @@ const QuestionDetails = () => {
     // window.location.reload();
   }, [id])
   return <>
+   <Navbar />
     {isLoading? <Paper elevation={6} className="loadingPaper">
       <CircularProgress size="7em" />
     </Paper> :
       <div className="questionWrapper" >
         <div className="question">
-          <Typography variant="h3" className="title">{question?.title}</Typography>
+          <Typography variant="h3" sx={{fontSize:"24px"}} className="title">{question?.title}</Typography>
           <Typography variant="h6" className="details">{question?.question}</Typography>
           <div className="tags">
             <Typography variant="body2" color="textSecondary">{question?.tags?.map((tag) => (<span key={tag} className="span">{tag}</span>))}</Typography>
           </div>
         </div>
-        <Paper className="fileSStyles" elevation={0} >
-         {question ? <>{question?.files?.map((file, index) => <img key={index} src={file} style={fileSStyles.file} elevation={4} />)}</>:""}
+        <Paper className="filesStyles" elevation={0} >
+         {question ? <>{question?.files?.map((file, index) => <img key={index} src={file}  className="question_file" />)}</>:""}
         </Paper>
         <div className="status">
           <Typography variant="body2" className="statusElement" >
@@ -63,10 +65,10 @@ const QuestionDetails = () => {
           <Typography variant="body2" style={{ margin: "20px 0" }}>{`${question?.answers?.length}`} {question?.answers?.length === 1 ? "Answer" : "Answers"}</Typography>
           <div>
             {question?.answers?.map((answer, index) =>
-              <Paper className="answer" key={index} elevation={3}>
-                <Paper>{answer.answer}</Paper>
-                <Paper style={fileSStyles.files} elevation={0} >
-                  {answer.files.map((file, index) => <img key={index} src={file} style={fileSStyles.file} elevation={4} />)}
+              <Paper className="answer" key={index} >
+                <Paper elevation={0}>{answer.answer}</Paper>
+                <Paper className="filesStyle" elevation={0} >
+                  {answer.files.map((file, index) => <img key={index} src={file} className="answer_file" elevation={4} />)}
                 </Paper>
                 <div className="answerDetails">
                   <Avatar className="purple" alt={answer?.name} src={answer?.picture}>{question?.name?.charAt(0)}</Avatar>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { Grid } from '@mui/material';
 import {useSelector} from "react-redux"
+import Navbar from '../home/navbar/Navbar';
 
 const VideoChat = () => {
 	const { _id } = useParams();
@@ -31,6 +32,7 @@ const VideoChat = () => {
 		// myMeeting();
 	}, [])
 	return (<>
+	<Navbar />
 		<div className='video_chat_gate'
 			style={{
 				width: "100vw",

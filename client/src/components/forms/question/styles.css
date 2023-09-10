@@ -2,18 +2,21 @@
 
   .ask{
     display:flex;
+    width: 70%;
+    margin: auto;
     flex-direction:column;
     width:55vw;
   }
   .heading{
-    font-size:27px;
-    font-weight:700;
-    font-family:BlinkMacSystemFont;
-    padding:0 20px"
+    font-size:22px;
+    padding: 20px 0;
   }
   .stepsToAskQuestion{
+    padding: 20px;
     background-color:#EBF4FB;
-    padding:0 20px"
+  }
+  .question_form_paper{
+    width: 100%;
   }
 
 

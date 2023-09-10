@@ -16,6 +16,7 @@ import Dashboard from "./components/dashboard/DashBoard";
 import Auth from "./pages/auth/Auth";
 import Signup from "./pages/auth/signup/Signup";
 import Signin from "./pages/auth/signin/Signin";
+import Navbar from "./pages/home/navbar/Navbar"
 import io from "socket.io-client";
 import VideoChat from "./pages/VideoChat/VideoChat";
 // const socket=io.connect("http://localhost:3001");
@@ -24,6 +25,7 @@ function App() {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return <>
+    {/* <Navbar /> */}
     {/* <Navbar /> */}
     <Routes>
       <Route path="/" exact element={<Home />} />

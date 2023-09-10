@@ -39,7 +39,7 @@ const Questions = () => {
             <Grid item md={2}>
                 <Sidebar />
             </Grid>
-            <Grid item md={6.5}>
+            <Grid item md={6.5} sx={{overflow:"auto",height:"100vh"}}>
                     {questions.map((question) => <Question key={question._id} question={question} />)
                     }
             </Grid>

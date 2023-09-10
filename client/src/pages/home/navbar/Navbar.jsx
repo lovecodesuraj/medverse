@@ -26,7 +26,7 @@ const Navbar = () => {
       >
         <div className="home_navbar_wrapper">
 
-          <div className="home_navbar_logo">medverse</div>
+          <div className="home_navbar_logo" onClick={()=>{navigate("/")}}>medverse</div>
           <div className="home_navbar_menu">
             <ul>
               <li><Link

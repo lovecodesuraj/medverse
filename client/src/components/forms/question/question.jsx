@@ -4,9 +4,9 @@ import { TextField, Button, Typography, Paper, CircularProgress } from "@mui/mat
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestion } from "../../../actions/questions";
 import "./styles.css"
+import { useNavigate } from "react-router-dom";
 const AddQuestion = () => {
-  // const classes = useStyles();
-  const [submitText, setSubmitText] = useState("ADD YOUR QUESTION");
+  const navigate=useNavigate();
   const user = JSON.parse(localStorage.getItem("profile"));
   const [question, setQuestion] = useState({
     question: "",
@@ -41,12 +41,12 @@ const AddQuestion = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setQuestion({ ...question, name: user?.name });
-    dispatch(addQuestion(question));
+    dispatch(addQuestion({question,navigate}));
   };
   return (
     <>
       <div className="ask">
-        <Typography variant="h2" className="heading">Ask a public question</Typography>
+        <Typography variant="h2"  sx={{fontSize:"27px"}} className="heading">Ask a public question</Typography>
         <div className="stepsToAskQuestion">
           <Typography variant="h6">Writing a good question</Typography>
           <Typography variant="h6">
@@ -72,7 +72,7 @@ const AddQuestion = () => {
             </ul>
           </div>
         </div>
-        <Paper className="paper">
+        <Paper className="question_form_paper">
         <form
           autoComplete="off"
           noValidate
