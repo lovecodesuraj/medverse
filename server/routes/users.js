@@ -1,6 +1,6 @@
 import express from "express"
 const router=express.Router();
-import {signin,editProfile,signup,getUsers,getUsersBySearch,getUser,googleAuth, fetchPhoneBook} from "../controllers/users.js";
+import {signin,editProfile,signup,getUsers,getUsersBySearch,getUser,googleAuth, fetchPhoneBook, saveContactMessage} from "../controllers/users.js";
 
 
 router.post("/signin",signin);
@@ -12,6 +12,7 @@ router.get("/search",getUsersBySearch)
 router.get("/:id",getUser)
 router.patch("/dashboard/editProfile/:_id",editProfile)
 router.get("/fetchPhoneBook/:_id",fetchPhoneBook);
+router.post('/saveContactMessage',saveContactMessage);
 
 
 export default router;

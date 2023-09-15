@@ -8,6 +8,8 @@ import Features from "./features/Features";
 import "./styles.css";
 import Intro from "./intro/Intro";
 import Navbar from "./navbar/Navbar";
+import Contact from "../../components/contact/Contact";
+import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ const Home = () => {
         <Navbar />
         <Intro />
         <Features />
+        <Contact />
+        <Footer />
       </Grid>
     </>
   );

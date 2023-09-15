@@ -1,5 +1,6 @@
 import * as api from "../api"
 
+
 export const getUsers=()=> async (dispatch)=>{
     try {
         dispatch({ type: "START_LOADING" })
@@ -86,3 +87,18 @@ export const fetchPhoneBook=({_id})=>async (dispatch)=>{
         console.log(error);
     }
 }
+
+export const saveContactMessage=(data)=>async (dispatch)=>{
+    try {
+        // dispatch({? type: "SAVING_CONTACT_MESSAGE" })
+        await api.saveContactMessage(data);
+        alert("Message sent.")
+        dispatch({ type:"MESSAGE_SENT"})
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+

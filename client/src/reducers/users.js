@@ -1,4 +1,4 @@
-export default (state={isLoading:true,user:{},me:{},users:[]},action)=>{
+export default (state={isLoading:true,messageSent:false,user:{},me:{},users:[]},action)=>{
     switch (action.type) {
         case "START_LOADING" :
             return {
@@ -22,9 +22,14 @@ export default (state={isLoading:true,user:{},me:{},users:[]},action)=>{
                 ...state,
                  me:action.payload,
             };    
+        case "MESSAGE_SENT" :
+            return {
+                ...state,messageSent:true
+            } ;
+
         case "ADD_USER" :
             return {...state,users:[...state.users,action.payload]}
-            default :
+        default :
             return state
     }   
 }

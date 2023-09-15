@@ -38,3 +38,7 @@ export const fetchPhoneBook=({_id})=>API.get(`/users/fetchPhoneBook/${_id}`);
 //drduck
 export const askToDrDuck=({content,userId})=>API.post(`/drDuck/ask/${userId}`,{content});
 export const fetchDrDuckChat=(userId)=>API.get(`/drDuck/chat/${userId}`);
+
+
+//contact
+export const saveContactMessage=(data)=>API.post('users/saveContactMessage',data);

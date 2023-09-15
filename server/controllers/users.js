@@ -6,7 +6,7 @@ import dotenv from "dotenv"
 import { randomUUID } from 'crypto';
 import PhoneBook from "../models/videoContactBook.js";
 dotenv.config();
-
+import axios from "axios";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
@@ -145,4 +145,21 @@ export const fetchPhoneBook=async(req,res)=>{
      console.log(error);
      res.json({message:"something went wrong."});   
    }
+}
+
+export const saveContactMessage = async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const sendingData = new FormData();
+  sendingData.append('Name',data.name);
+  sendingData.append('Email',data.email);
+  sendingData.append('Message',data.message);
+  try {
+     const response = await axios.post(process.env.GOOGLE_SPREADSHEET_URL,sendingData);
+     console.log(response.data);
+     res.status(200);
+  } catch (error) {
+    console.log({error});
+     res.status(400).json({ error });
+  }
 }
