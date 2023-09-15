@@ -1,3 +1,5 @@
 # medverse
 
-## Deployed at : https://fantastic-biscuit-866479.netlify.app/
+## Deployed at : https://medverse-trial.onrender.com/
+
+### some css isnt applied due to some schema of render hosting service
